@@ -23,7 +23,7 @@ vector<pair<int, int>> AI::GetLegalMoves(const Board& board) {
     return moves;
 }
 
-int AI::EvaluateBoard(const Board& board, char ai_player, char human_player) {
+int AI::EvaluateBoard(const Board& board, char ai_player, char human_player) { // <------ will need to look at the use of ai_player and human_player
     vector<vector<int>> board_nums(3, vector<int>(3));
     map<char, int> symbol_to_value = {
         {'X', 1},
