@@ -32,6 +32,12 @@ class AIAudit {
 
 class AI {
  public:
+
+ friend class AITest_FriendAccess_Test_EvaluateBoardDetectsXWin_Test;
+ friend class AITest_EvaluateBoardDetectsOWin_Test;
+ friend class AITest_EvaluateBoardDetectsDraw_Test;
+ friend class AITest_GenerateExplanation_Winning_Test;
+
   void SetDifficulty(const std::string& level);
   std::pair<int, int> GetBestMove(const Board& board, char ai_player);
   AIAudit audit_;
