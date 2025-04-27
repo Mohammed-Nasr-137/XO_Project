@@ -96,7 +96,7 @@ TEST(AITest, BlocksOpponentsWinningMove) {
     ai.SetDifficulty("hard");
     Board board = {
         {'O', 'O', ' '},
-        {'X', 'X', ' '},
+        {'X', ' ', ' '},
         {' ', ' ', ' '}
     };
     auto move = ai.GetBestMove(board, 'X');
