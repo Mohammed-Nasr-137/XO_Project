@@ -17,6 +17,8 @@ ctime
 -
 string
 -
+iostream
+-
 
 /workspaces/XO_Project/ai.h
 vector

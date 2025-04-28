@@ -47,6 +47,7 @@ class AI {
  private:
   int Minimax(Board board, bool is_maximizing, char ai_player, char human_player, int depth, int alpha, int beta, int max_depth);
   int EvaluateBoard(const Board& board, char ai_player, char human_player);
+  void LogMinimaxMove(bool is_maximizing, int depth, const std::string& message, std::pair<int, int> move = {-1, -1}) const;
   std::string GenerateExplanation(const Board& board_before, const Board& board_after, char ai_player, char human_player);
 
   std::vector<std::pair<int, int>> GetLegalMoves(const Board& board);

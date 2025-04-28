@@ -97,7 +97,7 @@ TEST(AITest, BlocksOpponentsWinningMove) {
     Board board = {
         {'O', 'O', ' '},
         {'X', ' ', ' '},
-        {' ', ' ', ' '}
+        {' ', 'X', ' '}
     };
     auto move = ai.GetBestMove(board, 'X');
     EXPECT_EQ(move.first, 0);

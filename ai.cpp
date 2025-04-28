@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -58,18 +59,41 @@ int AI::EvaluateBoard(const Board& board, char ai_player, char human_player) {
     return 0;
 }
 
+void AI::LogMinimaxMove(bool is_maximizing, int depth, const std::string& message, std::pair<int, int> move) const {
+    std::string indent(depth * 2, ' ');  // 2 spaces per depth level
+    std::string player = is_maximizing ? "MAX" : "MIN";
+
+    if (move.first != -1 && move.second != -1) {
+        cout << indent << player << ": " << message << " (" << move.first << "," << move.second << ") at depth " << depth << endl;
+    } else {
+        cout << indent << player << ": " << message << " at depth " << depth << endl;
+    }
+}
+
+
 int AI::Minimax(Board board, bool is_maximizing, char ai_player, char human_player,
     int depth, int alpha, int beta, int max_depth) {
-    int score = EvaluateBoard(board, ai_player, human_player);
-    if (score == 10 || score == -10) return score - depth;
-    if (GetLegalMoves(board).empty()) return 0;
 
-    if (depth >= max_depth) return 0;
+    int score = EvaluateBoard(board, ai_player, human_player);
+    if (score == 10 || score == -10) {
+        // LogMinimaxMove(is_maximizing, depth, "Terminal node: Score = " + std::to_string(score - depth)); 
+        return score - depth;
+    }
+    if (GetLegalMoves(board).empty()) {
+        // LogMinimaxMove(is_maximizing, depth, "Draw");
+        return 0;
+    }
+
+    if (depth >= max_depth) {
+        // LogMinimaxMove(is_maximizing, depth, "Max depth reached");
+        return 0;
+    }
     // AI turn
     if (is_maximizing) {
         int best = numeric_limits<int>::min();
         for (const auto& move : GetLegalMoves(board)) {
             board[move.first][move.second] = ai_player;
+            // LogMinimaxMove(true, depth, "Trying move", move);
 
             int val = Minimax(board, false, ai_player, human_player,
                               depth + 1, alpha, beta, max_depth);
@@ -77,8 +101,12 @@ int AI::Minimax(Board board, bool is_maximizing, char ai_player, char human_play
             best = max(best, val);
             alpha = max(alpha, best);
             board[move.first][move.second] = ' ';
-            if (beta <= alpha) break;
+            if (beta <= alpha) {
+                // LogMinimaxMove(true, depth, "Alpha-Beta Prune");
+                break;
+            }
         }
+        // LogMinimaxMove(true, depth, "Best score = " + std::to_string(best));
         return best;
     } 
     // Human turn
@@ -86,15 +114,20 @@ int AI::Minimax(Board board, bool is_maximizing, char ai_player, char human_play
         int best = numeric_limits<int>::max();
         for (const auto& move : GetLegalMoves(board)) {
             board[move.first][move.second] = human_player;
-
+            // LogMinimaxMove(false, depth, "Trying move", move);
+            
             int val = Minimax(board, true, ai_player, human_player,
                               depth + 1, alpha, beta, max_depth);
 
             best = min(best, val);
             beta = min(beta, best);
             board[move.first][move.second] = ' ';
-            if (beta <= alpha) break;
+            if (beta <= alpha) {
+                // LogMinimaxMove(false, depth, "Alpha-Beta Prune");
+                break;
+            }
         }
+        // LogMinimaxMove(false, depth, "Best score = " + std::to_string(best));
         return best;
     }
 }
