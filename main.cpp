@@ -237,7 +237,7 @@ int main()
     GameEngine game;
 
     AI ai_player;
-    string diff = "medium";
+    string diff = "hard";
 
     ai_player.SetDifficulty(diff);
 
