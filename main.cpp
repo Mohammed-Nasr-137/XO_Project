@@ -300,13 +300,6 @@ int main()
             cout << "It's a draw!\n";
             break;
         }
-
-        
-/* // we need to check if the player's move is valid before moving to ai move
-        pair<int, int> ai_move = ai_player.GetBestMove(game.get_board(), game.getCurrentPlayer());
-        ai_position = ai_move.first * 3 + ai_move.second +  1;
-        game.makeMove(ai_position);
-        */
  
 
     }
