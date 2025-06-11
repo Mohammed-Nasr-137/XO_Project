@@ -137,9 +137,9 @@ _deps/googletest-build/googletest/clean: _deps/googletest-build/googletest/CMake
 # Target rules for target CMakeFiles/test_ai.dir
 
 # All Build rule for target.
+CMakeFiles/test_ai.dir/all: CMakeFiles/ai.dir/all
 CMakeFiles/test_ai.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 CMakeFiles/test_ai.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/test_ai.dir/all: CMakeFiles/ai.dir/all
 	$(MAKE) -f CMakeFiles/test_ai.dir/build.make CMakeFiles/test_ai.dir/depend
 	$(MAKE) -f CMakeFiles/test_ai.dir/build.make CMakeFiles/test_ai.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=11,12 "Built target test_ai"
@@ -220,8 +220,8 @@ CMakeFiles/ai.dir/clean:
 # Target rules for target _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir
 
 # All Build rule for target.
-_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=5,6 "Built target gmock_main"
