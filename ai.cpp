@@ -187,7 +187,7 @@ pair<int, int> AI::GetBestMove(const Board& board, char ai_player) {
 
     int best_score = numeric_limits<int>::min();
     pair<int, int> best_move = {-1, -1};
-    int max_depth = (difficulty_ == "medium") ? 1 : 3; // medium = shallow search
+    int max_depth = (difficulty_ == "medium") ? 1 : 5; // medium = shallow search
 
     for (const auto& move : legal_moves) {
         Board temp = board;

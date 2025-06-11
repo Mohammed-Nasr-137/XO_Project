@@ -258,7 +258,7 @@ int main()
             cout << "\nAI Player " << game.getCurrentPlayer() << "'s turn.\nPosition (1-9): \n";
             pair<int, int> ai_move = ai_player.GetBestMove(game.get_board(), game.getCurrentPlayer());
             position = ai_move.first * 3 + ai_move.second +  1;
-            cout << "/n" << ai_player.audit_.GetLastExplanation() << "\n";
+            cout << "\n" << ai_player.audit_.GetLastExplanation() << "\n";
         }
 
         
