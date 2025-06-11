@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "ai.cpp"
+
 using namespace std;
 
 /* Implemented with the implmentation of undoMove() function */
@@ -219,12 +221,25 @@ class GameEngine
         /* Game is not over yet */
         return false;
     }
+
+    Board get_board()
+    {
+        return board;
+    }
+
+
 };
 
 int main()
 {
     int position;
+    int ai_position;
     GameEngine game;
+
+    AI ai_player;
+    string diff = "easy";
+
+    ai_player.SetDifficulty(diff);
 
     cout << "\nEnter position (1-9), 0 to reset, 10 to undo: \n";
     game.Game_init();
@@ -270,6 +285,11 @@ int main()
             cout << "It's a draw!\n";
             break;
         }
+
+        pair<int, int> ai_move = ai_player.GetBestMove(game.get_board(), game.getCurrentPlayer());
+        ai_position = ai_move.first * 3 + ai_move.second +  1;
+        game.makeMove(ai_position);
+
     }
     return 0;
 }
