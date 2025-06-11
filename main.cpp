@@ -79,7 +79,7 @@ class GameEngine
     char getCurrentPlayer() const {   return currentPlayer;   }
 
     bool isValidMove(int position)
-    {
+    {   
         /* Tests all the bad cases of moves placement*/
 
         /* we check first if the position is out of range , if out of range the function will return false and displays the board again with the last state before the invalid move */
@@ -107,7 +107,7 @@ class GameEngine
     void makeMove(int position)
     {
         if(isValidMove(position))
-        {
+        {  
             /* These equations is to make the user interface easier by giving one input which is the desired position */
             int row = (position - 1) / 3;
             int col = (position - 1) % 3;
@@ -289,6 +289,24 @@ int main()
         pair<int, int> ai_move = ai_player.GetBestMove(game.get_board(), game.getCurrentPlayer());
         ai_position = ai_move.first * 3 + ai_move.second +  1;
         game.makeMove(ai_position);
+        
+
+
+        /* Check for win */
+        if (game.checkWin(current))
+        {
+            game.displayBoard();
+            cout << "Player " << current << " wins!\n";
+            break;
+        }
+
+        /* Check for draw */
+        if (game.checkDraw())
+        {
+            game.displayBoard();
+            cout << "It's a draw!\n";
+            break;
+        }
 
     }
     return 0;
