@@ -74,7 +74,7 @@ class GameEngine
             cout << endl;
         }
     }
-
+    
     /* for updating the current player continously while changing turns */
     char getCurrentPlayer() const {   return currentPlayer;   }
 
@@ -119,7 +119,7 @@ class GameEngine
             moveHistory.push_back({position, currentPlayer});
 
             /* changes turns */
-            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X'; 
+            currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
         }
     }
 
@@ -237,7 +237,7 @@ int main()
     GameEngine game;
 
     AI ai_player;
-    string diff = "easy";
+    string diff = "medium";
 
     ai_player.SetDifficulty(diff);
 
@@ -246,9 +246,23 @@ int main()
     while(!game.isGameOver())
     {
         game.displayBoard();
-        cout << "\nPlayer " << game.getCurrentPlayer() << "'s turn.\nPosition (1-9): ";
         
-        cin >> position;
+        
+        if (game.getCurrentPlayer() == 'X')
+        {
+            cout << "\nPlayer " << game.getCurrentPlayer() << "'s turn.\nPosition (1-9): \n";
+            cin >> position;
+        }
+        else
+        { 
+            cout << "\nAI Player " << game.getCurrentPlayer() << "'s turn.\nPosition (1-9): \n";
+            pair<int, int> ai_move = ai_player.GetBestMove(game.get_board(), game.getCurrentPlayer());
+            position = ai_move.first * 3 + ai_move.second +  1;
+            cout << "/n" << ai_player.audit_.GetLastExplanation() << "\n";
+        }
+
+        
+       
 
         /* Resets the board */
         if(position == 0)
@@ -264,6 +278,7 @@ int main()
             game.undoMove();
             continue; 
         }
+        
 
         /* variable that saves winner before switching turns */
         char current = game.getCurrentPlayer();
@@ -286,27 +301,13 @@ int main()
             break;
         }
 
+        
+/* // we need to check if the player's move is valid before moving to ai move
         pair<int, int> ai_move = ai_player.GetBestMove(game.get_board(), game.getCurrentPlayer());
         ai_position = ai_move.first * 3 + ai_move.second +  1;
         game.makeMove(ai_position);
-        
-
-
-        /* Check for win */
-        if (game.checkWin(current))
-        {
-            game.displayBoard();
-            cout << "Player " << current << " wins!\n";
-            break;
-        }
-
-        /* Check for draw */
-        if (game.checkDraw())
-        {
-            game.displayBoard();
-            cout << "It's a draw!\n";
-            break;
-        }
+        */
+ 
 
     }
     return 0;
