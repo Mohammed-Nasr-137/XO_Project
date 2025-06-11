@@ -3,10 +3,14 @@ project(XO_Project)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Add your core source file
+# AI Logic as a static library
 add_library(ai STATIC ai.cpp)
 
-# GoogleTest Setup
+# Main game executable
+add_executable(xo_game main.cpp)
+target_link_libraries(xo_game ai)
+
+# GoogleTest Setup for testing (optional but useful)
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -16,10 +20,8 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-# Add your test executable
+# Test binary
 add_executable(test_ai test_ai.cpp)
-
-# Link test with GoogleTest and your core library
 target_link_libraries(test_ai gtest_main ai)
 
 include(GoogleTest)
