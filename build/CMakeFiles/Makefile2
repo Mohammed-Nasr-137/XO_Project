@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = /workspaces/XO_Project/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/test_ai_perf.dir/all
 all: CMakeFiles/test_ai.dir/all
 all: CMakeFiles/ai.dir/all
 all: _deps/googletest-build/all
@@ -65,6 +66,7 @@ preinstall: _deps/googletest-build/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/test_ai_perf.dir/clean
 clean: CMakeFiles/test_ai.dir/clean
 clean: CMakeFiles/ai.dir/clean
 clean: _deps/googletest-build/clean
@@ -130,6 +132,35 @@ _deps/googletest-build/googletest/clean: _deps/googletest-build/googletest/CMake
 _deps/googletest-build/googletest/clean: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/clean
 
 .PHONY : _deps/googletest-build/googletest/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_ai_perf.dir
+
+# All Build rule for target.
+CMakeFiles/test_ai_perf.dir/all: CMakeFiles/ai.dir/all
+CMakeFiles/test_ai_perf.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
+CMakeFiles/test_ai_perf.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
+	$(MAKE) -f CMakeFiles/test_ai_perf.dir/build.make CMakeFiles/test_ai_perf.dir/depend
+	$(MAKE) -f CMakeFiles/test_ai_perf.dir/build.make CMakeFiles/test_ai_perf.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=13,14 "Built target test_ai_perf"
+.PHONY : CMakeFiles/test_ai_perf.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_ai_perf.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/XO_Project/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/test_ai_perf.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/XO_Project/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_ai_perf.dir/rule
+
+# Convenience name for target.
+test_ai_perf: CMakeFiles/test_ai_perf.dir/rule
+
+.PHONY : test_ai_perf
+
+# clean rule for target.
+CMakeFiles/test_ai_perf.dir/clean:
+	$(MAKE) -f CMakeFiles/test_ai_perf.dir/build.make CMakeFiles/test_ai_perf.dir/clean
+.PHONY : CMakeFiles/test_ai_perf.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/test_ai.dir

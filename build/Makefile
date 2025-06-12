@@ -168,6 +168,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test_ai_perf
+
+# Build rule for target.
+test_ai_perf: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_ai_perf
+.PHONY : test_ai_perf
+
+# fast build rule for target.
+test_ai_perf/fast:
+	$(MAKE) -f CMakeFiles/test_ai_perf.dir/build.make CMakeFiles/test_ai_perf.dir/build
+.PHONY : test_ai_perf/fast
+
+#=============================================================================
 # Target rules for targets named test_ai
 
 # Build rule for target.
@@ -299,6 +312,33 @@ test_ai.cpp.s:
 	$(MAKE) -f CMakeFiles/test_ai.dir/build.make CMakeFiles/test_ai.dir/test_ai.cpp.s
 .PHONY : test_ai.cpp.s
 
+test_ai_perf.o: test_ai_perf.cpp.o
+
+.PHONY : test_ai_perf.o
+
+# target to build an object file
+test_ai_perf.cpp.o:
+	$(MAKE) -f CMakeFiles/test_ai_perf.dir/build.make CMakeFiles/test_ai_perf.dir/test_ai_perf.cpp.o
+.PHONY : test_ai_perf.cpp.o
+
+test_ai_perf.i: test_ai_perf.cpp.i
+
+.PHONY : test_ai_perf.i
+
+# target to preprocess a source file
+test_ai_perf.cpp.i:
+	$(MAKE) -f CMakeFiles/test_ai_perf.dir/build.make CMakeFiles/test_ai_perf.dir/test_ai_perf.cpp.i
+.PHONY : test_ai_perf.cpp.i
+
+test_ai_perf.s: test_ai_perf.cpp.s
+
+.PHONY : test_ai_perf.s
+
+# target to generate assembly for a file
+test_ai_perf.cpp.s:
+	$(MAKE) -f CMakeFiles/test_ai_perf.dir/build.make CMakeFiles/test_ai_perf.dir/test_ai_perf.cpp.s
+.PHONY : test_ai_perf.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -312,6 +352,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... test_ai_perf"
 	@echo "... test_ai"
 	@echo "... ai"
 	@echo "... gmock_main"
@@ -324,6 +365,9 @@ help:
 	@echo "... test_ai.o"
 	@echo "... test_ai.i"
 	@echo "... test_ai.s"
+	@echo "... test_ai_perf.o"
+	@echo "... test_ai_perf.i"
+	@echo "... test_ai_perf.s"
 .PHONY : help
 
 

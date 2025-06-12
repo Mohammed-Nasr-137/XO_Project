@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/test_ai_perf.dir/test_ai_perf.cpp.o  -o test_ai_perf  lib/libgtest_main.a libai.a lib/libgtest.a -lpthread 

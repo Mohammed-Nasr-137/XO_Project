@@ -5,6 +5,7 @@
 /workspaces/XO_Project/build/CMakeFiles/rebuild_cache.dir
 /workspaces/XO_Project/build/CMakeFiles/edit_cache.dir
 /workspaces/XO_Project/build/CMakeFiles/test.dir
+/workspaces/XO_Project/build/CMakeFiles/test_ai_perf.dir
 /workspaces/XO_Project/build/CMakeFiles/test_ai.dir
 /workspaces/XO_Project/build/CMakeFiles/ai.dir
 /workspaces/XO_Project/build/_deps/googletest-build/CMakeFiles/install/strip.dir
