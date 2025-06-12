@@ -7,14 +7,17 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Add your core source file
 add_library(ai STATIC ai.cpp)
-
-# GoogleTest Setup
+# GoogleTest Setup (Safe way to build + link)
 include(FetchContent)
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/refs/heads/main.zip
 )
 FetchContent_MakeAvailable(googletest)
+
+# Disable GoogleTest's own tests
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
 
 enable_testing()
 
