@@ -24,3 +24,9 @@ target_link_libraries(test_ai gtest_main ai)
 
 include(GoogleTest)
 gtest_discover_tests(test_ai)
+
+add_executable(test_ai_perf test_ai_perf.cpp)
+target_link_libraries(test_ai_perf gtest_main ai)
+
+gtest_discover_tests(test_ai_perf)
+
