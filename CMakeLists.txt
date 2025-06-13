@@ -7,7 +7,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Add your core source file
 add_library(ai STATIC ai.cpp)
-add_library(sys STATIC )
 # GoogleTest Setup (Safe way to build + link)
 include(FetchContent)
 FetchContent_Declare(
