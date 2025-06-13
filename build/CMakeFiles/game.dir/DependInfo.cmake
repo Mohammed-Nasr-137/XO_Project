@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/workspaces/XO_Project/main.cpp" "/workspaces/XO_Project/build/CMakeFiles/xo_game.dir/main.cpp.o"
+  "/workspaces/XO_Project/game_logic.cpp" "/workspaces/XO_Project/build/CMakeFiles/game.dir/game_logic.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -14,9 +14,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/workspaces/XO_Project/build/CMakeFiles/ai.dir/DependInfo.cmake"
-  "/workspaces/XO_Project/build/CMakeFiles/sys.dir/DependInfo.cmake"
-  "/workspaces/XO_Project/build/CMakeFiles/game.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

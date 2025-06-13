@@ -94,8 +94,10 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.16/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake"
   "/usr/share/cmake-3.16/Modules/FetchContent.cmake"
   "/usr/share/cmake-3.16/Modules/FetchContent/CMakeLists.cmake.in"
+  "/usr/share/cmake-3.16/Modules/FindOpenSSL.cmake"
   "/usr/share/cmake-3.16/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-3.16/Modules/FindPackageMessage.cmake"
+  "/usr/share/cmake-3.16/Modules/FindPkgConfig.cmake"
   "/usr/share/cmake-3.16/Modules/FindThreads.cmake"
   "/usr/share/cmake-3.16/Modules/GNUInstallDirs.cmake"
   "/usr/share/cmake-3.16/Modules/GoogleTest.cmake"
@@ -147,6 +149,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/test_ai.dir/DependInfo.cmake"
   "CMakeFiles/xo_game.dir/DependInfo.cmake"
+  "CMakeFiles/game.dir/DependInfo.cmake"
   "CMakeFiles/sys.dir/DependInfo.cmake"
   "CMakeFiles/ai.dir/DependInfo.cmake"
   "_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/DependInfo.cmake"

@@ -3,5 +3,8 @@
 
 CMakeFiles/xo_game.dir/main.cpp.o: ../ai.cpp
 CMakeFiles/xo_game.dir/main.cpp.o: ../ai.h
+CMakeFiles/xo_game.dir/main.cpp.o: ../game_logic.cpp
 CMakeFiles/xo_game.dir/main.cpp.o: ../main.cpp
+CMakeFiles/xo_game.dir/main.cpp.o: ../user_system.cpp
+CMakeFiles/xo_game.dir/main.cpp.o: ../user_system.h
 

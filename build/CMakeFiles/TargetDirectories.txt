@@ -1,9 +1,10 @@
 /workspaces/XO_Project/build/CMakeFiles/install/strip.dir
 /workspaces/XO_Project/build/CMakeFiles/install/local.dir
-/workspaces/XO_Project/build/CMakeFiles/edit_cache.dir
-/workspaces/XO_Project/build/CMakeFiles/test.dir
 /workspaces/XO_Project/build/CMakeFiles/test_ai.dir
 /workspaces/XO_Project/build/CMakeFiles/xo_game.dir
+/workspaces/XO_Project/build/CMakeFiles/edit_cache.dir
+/workspaces/XO_Project/build/CMakeFiles/test.dir
+/workspaces/XO_Project/build/CMakeFiles/game.dir
 /workspaces/XO_Project/build/CMakeFiles/install.dir
 /workspaces/XO_Project/build/CMakeFiles/list_install_components.dir
 /workspaces/XO_Project/build/CMakeFiles/rebuild_cache.dir

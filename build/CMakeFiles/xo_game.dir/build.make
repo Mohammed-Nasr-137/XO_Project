@@ -81,6 +81,8 @@ xo_game: CMakeFiles/xo_game.dir/main.cpp.o
 xo_game: CMakeFiles/xo_game.dir/build.make
 xo_game: libai.a
 xo_game: libsys.a
+xo_game: libgame.a
+xo_game: /usr/lib/x86_64-linux-gnu/libcrypto.so
 xo_game: CMakeFiles/xo_game.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable xo_game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/xo_game.dir/link.txt --verbose=$(VERBOSE)

@@ -55,6 +55,7 @@ CMAKE_BINARY_DIR = /workspaces/XO_Project/build
 # The main recursive "all" target.
 all: CMakeFiles/test_ai.dir/all
 all: CMakeFiles/xo_game.dir/all
+all: CMakeFiles/game.dir/all
 all: CMakeFiles/sys.dir/all
 all: CMakeFiles/ai.dir/all
 all: _deps/googletest-build/all
@@ -69,6 +70,7 @@ preinstall: _deps/googletest-build/preinstall
 # The main recursive "clean" target.
 clean: CMakeFiles/test_ai.dir/clean
 clean: CMakeFiles/xo_game.dir/clean
+clean: CMakeFiles/game.dir/clean
 clean: CMakeFiles/sys.dir/clean
 clean: CMakeFiles/ai.dir/clean
 clean: _deps/googletest-build/clean
@@ -139,12 +141,12 @@ _deps/googletest-build/googletest/clean: _deps/googletest-build/googletest/CMake
 # Target rules for target CMakeFiles/test_ai.dir
 
 # All Build rule for target.
+CMakeFiles/test_ai.dir/all: CMakeFiles/ai.dir/all
 CMakeFiles/test_ai.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 CMakeFiles/test_ai.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
-CMakeFiles/test_ai.dir/all: CMakeFiles/ai.dir/all
 	$(MAKE) -f CMakeFiles/test_ai.dir/build.make CMakeFiles/test_ai.dir/depend
 	$(MAKE) -f CMakeFiles/test_ai.dir/build.make CMakeFiles/test_ai.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=13,14 "Built target test_ai"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=15,16 "Built target test_ai"
 .PHONY : CMakeFiles/test_ai.dir/all
 
 # Build rule for subdir invocation for target.
@@ -168,16 +170,17 @@ CMakeFiles/test_ai.dir/clean:
 # Target rules for target CMakeFiles/xo_game.dir
 
 # All Build rule for target.
-CMakeFiles/xo_game.dir/all: CMakeFiles/sys.dir/all
 CMakeFiles/xo_game.dir/all: CMakeFiles/ai.dir/all
+CMakeFiles/xo_game.dir/all: CMakeFiles/sys.dir/all
+CMakeFiles/xo_game.dir/all: CMakeFiles/game.dir/all
 	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/depend
 	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=15,16 "Built target xo_game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=17,18 "Built target xo_game"
 .PHONY : CMakeFiles/xo_game.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/xo_game.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/XO_Project/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/XO_Project/build/CMakeFiles 8
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/xo_game.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/XO_Project/build/CMakeFiles 0
 .PHONY : CMakeFiles/xo_game.dir/rule
@@ -193,13 +196,40 @@ CMakeFiles/xo_game.dir/clean:
 .PHONY : CMakeFiles/xo_game.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/game.dir
+
+# All Build rule for target.
+CMakeFiles/game.dir/all:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/depend
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=3,4 "Built target game"
+.PHONY : CMakeFiles/game.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/game.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/XO_Project/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/game.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspaces/XO_Project/build/CMakeFiles 0
+.PHONY : CMakeFiles/game.dir/rule
+
+# Convenience name for target.
+game: CMakeFiles/game.dir/rule
+
+.PHONY : game
+
+# clean rule for target.
+CMakeFiles/game.dir/clean:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/clean
+.PHONY : CMakeFiles/game.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/sys.dir
 
 # All Build rule for target.
 CMakeFiles/sys.dir/all:
 	$(MAKE) -f CMakeFiles/sys.dir/build.make CMakeFiles/sys.dir/depend
 	$(MAKE) -f CMakeFiles/sys.dir/build.make CMakeFiles/sys.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=11,12 "Built target sys"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=13,14 "Built target sys"
 .PHONY : CMakeFiles/sys.dir/all
 
 # Build rule for subdir invocation for target.
@@ -250,11 +280,11 @@ CMakeFiles/ai.dir/clean:
 # Target rules for target _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir
 
 # All Build rule for target.
-_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
+_deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=5,6 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=7,8 "Built target gmock_main"
 .PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -281,7 +311,7 @@ _deps/googletest-build/googlemock/CMakeFiles/gmock_main.dir/clean:
 _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=3,4 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=5,6 "Built target gmock"
 .PHONY : _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -308,7 +338,7 @@ _deps/googletest-build/googlemock/CMakeFiles/gmock.dir/clean:
 _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all: _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=9,10 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=11,12 "Built target gtest_main"
 .PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -335,7 +365,7 @@ _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/clean:
 _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=7,8 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=9,10 "Built target gtest"
 .PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.

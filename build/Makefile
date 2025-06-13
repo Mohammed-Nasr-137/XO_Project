@@ -194,6 +194,19 @@ xo_game/fast:
 .PHONY : xo_game/fast
 
 #=============================================================================
+# Target rules for targets named game
+
+# Build rule for target.
+game: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 game
+.PHONY : game
+
+# fast build rule for target.
+game/fast:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/build
+.PHONY : game/fast
+
+#=============================================================================
 # Target rules for targets named sys
 
 # Build rule for target.
@@ -298,6 +311,33 @@ ai.cpp.s:
 	$(MAKE) -f CMakeFiles/ai.dir/build.make CMakeFiles/ai.dir/ai.cpp.s
 .PHONY : ai.cpp.s
 
+game_logic.o: game_logic.cpp.o
+
+.PHONY : game_logic.o
+
+# target to build an object file
+game_logic.cpp.o:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_logic.cpp.o
+.PHONY : game_logic.cpp.o
+
+game_logic.i: game_logic.cpp.i
+
+.PHONY : game_logic.i
+
+# target to preprocess a source file
+game_logic.cpp.i:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_logic.cpp.i
+.PHONY : game_logic.cpp.i
+
+game_logic.s: game_logic.cpp.s
+
+.PHONY : game_logic.s
+
+# target to generate assembly for a file
+game_logic.cpp.s:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_logic.cpp.s
+.PHONY : game_logic.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -387,10 +427,11 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... install/local"
-	@echo "... edit_cache"
-	@echo "... test"
 	@echo "... test_ai"
 	@echo "... xo_game"
+	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... game"
 	@echo "... install"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
@@ -403,6 +444,9 @@ help:
 	@echo "... ai.o"
 	@echo "... ai.i"
 	@echo "... ai.s"
+	@echo "... game_logic.o"
+	@echo "... game_logic.i"
+	@echo "... game_logic.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
