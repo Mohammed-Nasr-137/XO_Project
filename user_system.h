@@ -34,7 +34,7 @@ private:
     std::vector<std::tuple<int, std::string, std::string, std::string>> 
     UserSystem::getGameHistory(const std::string& username);
    
-    std::vector<std::pair<int, std::optional<std::string>>>
+    std::vector<std::pair<int, std::optional<std::string>>
     loadGameMovesWithComments(int game_id);
     
     std::tuple<int, int, int> getHeadToHeadStats(const std::string& user1, const std::string& user2);

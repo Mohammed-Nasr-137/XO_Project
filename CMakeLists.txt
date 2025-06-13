@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.14)
 project(XO_Project)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # AI Logic as a static library
 add_library(ai STATIC ai.cpp)
