@@ -15,7 +15,7 @@ void game_flow()
     GameEngine game;
 
     AI ai_player;
-    string diff = "easy";
+    string diff = "medium";
 
     ai_player.SetDifficulty(diff);
 
