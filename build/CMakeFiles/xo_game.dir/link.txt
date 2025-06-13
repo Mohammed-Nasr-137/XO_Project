@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/xo_game.dir/main.cpp.o  -o xo_game  libai.a libsys.a 
