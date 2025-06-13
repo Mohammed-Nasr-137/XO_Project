@@ -53,8 +53,7 @@ void UserSystem::createTables()
         "id INTEGER PRIMARY KEY AUTOINCREMENT,"
         "player1 TEXT NOT NULL,"
         "player2 TEXT NOT NULL,"
-        "winner TEXT NOT NULL,"  // "X", "O", "Tie"
-        "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP);";
+        "winner TEXT NOT NULL);"; // "X", "O", "Tie"
 
     if (sqlite3_exec(db, history_table_sql, nullptr, nullptr, &errMsg) != SQLITE_OK) 
     {

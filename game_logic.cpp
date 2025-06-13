@@ -23,7 +23,8 @@ class GameEngine
         char currentPlayer;
 
         /* defines a vector (moveHistory) for keeping track of all moves allowing undoing any move */
-        vector<Move> moveHistory;
+        // vector<Move> moveHistory;
+        vector<pair<Move, string>> moveHistory;
 
         int playerValue(char cell)
         {
@@ -44,7 +45,7 @@ class GameEngine
         {
             /* Initializes the board */
             board = vector<vector<char>>(3, vector<char>(3, ' '));
-
+            
             /* because X starts */
             currentPlayer = 'X';
 
@@ -105,7 +106,7 @@ class GameEngine
         return true;
     }
 
-    void makeMove(int position)
+    void makeMove(int position, string comment)
     {
         if(isValidMove(position))
         {  
@@ -117,7 +118,8 @@ class GameEngine
             board[row][col] = currentPlayer;
 
             /* saves the state in case of undo */
-            moveHistory.push_back({position, currentPlayer});
+            pair<Move, string> p = {{position, currentPlayer}, comment};
+            moveHistory.push_back(p);
 
             /* changes turns */
             currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
@@ -136,20 +138,20 @@ class GameEngine
 
         /* Get last move from history */
         /* .back() — returns a reference to the last element */
-        Move lastMove = moveHistory.back();
+        pair<Move, string> lastMove = moveHistory.back();
 
         /* .pop_back() — removes the last element */
         moveHistory.pop_back();
 
         /* These equations is to make the user interface easier by giving one input which is the desired position */
-        int row = (lastMove.position - 1) / 3;
-        int col = (lastMove.position - 1) % 3;
+        int row = (lastMove.first.position - 1) / 3;
+        int col = (lastMove.first.position - 1) % 3;
         
         /* Revert the board */
         board[row][col] = ' ';
         
         /* Revert the player */ 
-        currentPlayer = lastMove.player;
+        currentPlayer = lastMove.first.player;
         cout << "Move has been undone!\n";
     }
 
@@ -228,5 +230,9 @@ class GameEngine
         return board;
     }
 
+    vector<pair<Move, string>> get_moveHistory()
+    {
+        return moveHistory;
+    }
 
 };

@@ -14,17 +14,6 @@ public:
     bool registerUser(const std::string& username, const std::string& password);
     bool loginUser(const std::string& username, const std::string& password);
 
-private:
-    sqlite3* db;
-
-    bool openDatabase(const std::string& db_name);
-
-    
-
-    void closeDatabase();
-    void createTables();
-    std::string hashPassword(const std::string& password);
-    
     bool saveGameWithMoves(const std::string& player1,
                        const std::string& player2,
                        const std::string& winner,
@@ -39,6 +28,19 @@ private:
     std::tuple<int, int, int> getHeadToHeadStats(const std::string& user1, const std::string& user2);
     std::tuple<int, int, int> getHumanVsAIStats(const std::string& humanUser);
 
+
+private:
+    sqlite3* db;
+
+    bool openDatabase(const std::string& db_name);
+
+    
+
+    void closeDatabase();
+    void createTables();
+    std::string hashPassword(const std::string& password);
+    
+    
 };
 
 #endif // USER_SYSTEM_H
