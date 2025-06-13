@@ -7,6 +7,8 @@
 
 using namespace std;
 
+string game_winner;
+
 
 void game_flow()
 {
@@ -54,6 +56,7 @@ void game_flow()
         else if(position == 10)
         {
             game.undoMove();
+            game.undoMove();
             continue; 
         }
         
@@ -68,6 +71,7 @@ void game_flow()
         {
             game.displayBoard();
             cout << "Player " << current << " wins!\n";
+            game_winner = current;
             break;
         }
 
@@ -76,6 +80,7 @@ void game_flow()
         {
             game.displayBoard();
             cout << "It's a draw!\n";
+            game_winner = "Tie";
             break;
         }
  
@@ -83,23 +88,51 @@ void game_flow()
     }
 }
 
+pair<string, string> get_name_and_pass()
+{
+    string name, password;
+    cout << "Enter your name: ";
+    cin >> name;
+    cout << "Enter your pass: ";
+    cin >> password;
+    return make_pair(name, password);
+} 
+
 
 int main()
 {
     // init sys
     UserSystem sys("game_db");
-    string name, password;
-
-    cout << "Hello to XO world \n";
-    cout << "Enter your name: ";
-    cin >> name;
-    cout << "Enter your pass: ";
-    cin >> password;
-    sys.registerUser(name, password);
+    bool success;
+    pair<string, string> cred_pair;
+    do
+    {
+        int acc;
+        cout << "Hello to XO world \nRegister or login (1,2): ";
+        cin >> acc;
+        cred_pair = get_name_and_pass();
+        success = false;
+    if (acc == 1) 
+    {
+        success = sys.registerUser(cred_pair.first, cred_pair.second);
+        if (!success) cout << "reg failed or user already exits! \n";
+    }
+    else if (acc == 2)
+    {
+        success = sys.loginUser(cred_pair.first, cred_pair.second);
+        if (!success) cout << "login failed! \n";
+    }
+    } while (!success);
+    
+    
+    
+   
 
     // start game
     game_flow();
 
+    // sys.saveGameWithMoves(cred_pair.first, "AI", game_winner, );   // here moves remains to be added
+    
     int choice;
     cout << "what do you want to do? (1:replay, 2:exit)  ";
     cin >> choice;
