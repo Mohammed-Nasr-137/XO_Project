@@ -145,7 +145,7 @@ std::string UserSystem::hashPassword(const std::string& password)
 bool UserSystem::saveGameWithMoves(const std::string& player1,
                                    const std::string& player2,
                                    const std::string& winner,
-                                   const std::vector<std::pair<int, std::optional<std::string>>>& moves) 
+                                   const std::vector<std::pair<int, std::string>>& moves) 
 {
     //Ensures atomicity: either all changes are saved, or none are, if something fails.
     sqlite3_exec(db, "BEGIN TRANSACTION;", nullptr, nullptr, nullptr);
@@ -186,9 +186,9 @@ bool UserSystem::saveGameWithMoves(const std::string& player1,
         //Then we handle the comment
         //If the move includes a comment (from AI), it’s added
         //If not given it is NULL
-        if (moves[i].second.has_value()) 
+        if (!moves[i].second.empty()) 
         {
-            sqlite3_bind_text(stmt_move, 4, moves[i].second->c_str(), -1, SQLITE_STATIC);
+            sqlite3_bind_text(stmt_move, 4, moves[i].second.c_str(), -1, SQLITE_STATIC);
         } 
         else 
         {
@@ -255,7 +255,7 @@ UserSystem::getGameHistory(const std::string& username)
     return history;
 }
 
-std::vector<std::pair<int, std::optional<std::string>>>
+std::vector<std::pair<int, std::string>>
 UserSystem::loadGameMovesWithComments(int game_id)
 {
     /*
@@ -269,7 +269,7 @@ UserSystem::loadGameMovesWithComments(int game_id)
                       "ORDER BY move_index ASC;";
 
     sqlite3_stmt* stmt;
-    std::vector<std::pair<int, std::optional<std::string>>> moves;
+    std::vector<std::pair<int, std::string>> moves;
 
     if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK)
         return moves;
@@ -286,7 +286,7 @@ UserSystem::loadGameMovesWithComments(int game_id)
 
         //Read the comment (null string if no comment)
         const char* comment_text = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 1));
-        std::optional<std::string> comment;
+        std::string comment;
 
         if (comment_text != nullptr)
             comment = std::string(comment_text);

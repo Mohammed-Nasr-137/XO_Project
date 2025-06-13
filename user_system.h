@@ -4,7 +4,6 @@
 #include <string>
 #include <sqlite3.h>
 #include <vector>
-#include <optional>
 
 class UserSystem 
 {
@@ -29,12 +28,12 @@ private:
     bool saveGameWithMoves(const std::string& player1,
                        const std::string& player2,
                        const std::string& winner,
-                       const std::vector<std::pair<int, std::optional<std::string>>>& moves);
+                       const std::vector<std::pair<int, std::string>>& moves);
 
     std::vector<std::tuple<int, std::string, std::string, std::string>> 
-    UserSystem::getGameHistory(const std::string& username);
+    getGameHistory(const std::string& username);
    
-    std::vector<std::pair<int, std::optional<std::string>>
+    std::vector<std::pair<int, std::string>>
     loadGameMovesWithComments(int game_id);
     
     std::tuple<int, int, int> getHeadToHeadStats(const std::string& user1, const std::string& user2);
