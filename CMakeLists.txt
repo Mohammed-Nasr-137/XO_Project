@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Try to find OpenSSL first
 # ===============================
 find_package(OpenSSL QUIET)
+find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 if(NOT OpenSSL_FOUND)
   message(STATUS "OpenSSL not found on system, fetching from source...")
@@ -36,12 +37,12 @@ add_library(game STATIC game_logic.cpp)
 # ===============================
 # Main executable
 # ===============================
-add_executable(xo_game game_wrapper.cpp)
+add_executable(xo_game game_wrapper.cpp )
 
 if(OpenSSL_FOUND)
-  target_link_libraries(xo_game ai sys game sqlite3 OpenSSL::Crypto)
+  target_link_libraries(xo_game ai sys game sqlite3 OpenSSL::Crypto Qt5::Core Qt5::Gui Qt5::Widgets)
 else()
-  target_link_libraries(xo_game ai sys game sqlite3 crypto)  # fallback to -lcrypto
+  target_link_libraries(xo_game ai sys game sqlite3 crypto Qt5::Core Qt5::Gui Qt5::Widgets)  # fallback to -lcrypto
 endif()
 
 # ===============================
