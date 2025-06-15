@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/xo_game.dir/main.cpp.o  -o xo_game  libai.a libsys.a libgame.a -lsqlite3 /usr/lib/x86_64-linux-gnu/libcrypto.so 
