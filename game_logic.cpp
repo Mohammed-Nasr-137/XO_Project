@@ -87,7 +87,7 @@ class GameEngine
         /* we check first if the position is out of range , if out of range the function will return false and displays the board again with the last state before the invalid move */
         if(position < 1 || position > 9)
         {
-            cout << "\nInvalid position! Choose 1-9.\n";
+            // cout << "\nInvalid position! Choose 1-9.\n";
             return false;
         }
 
@@ -98,7 +98,7 @@ class GameEngine
         /* Second we check if the place is already taken */
         if(board[row][col] != ' ')
         {
-            cout << "\nPosition " << position << " is already taken!\n";
+            // cout << "\nPosition " << position << " is already taken!\n";
             return false;
         }
 
@@ -106,7 +106,7 @@ class GameEngine
         return true;
     }
 
-    void makeMove(int position, string comment)
+    bool makeMove(int position, string comment)
     {
         if(isValidMove(position))
         {  
@@ -123,17 +123,19 @@ class GameEngine
 
             /* changes turns */
             currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+            return true;
         }
+        return false;
     }
 
-    void undoMove()
+    bool undoMove()
     {
         /* .empty() — returns true if the vector has no elements */
         if (moveHistory.empty())
         {
             /* if the player undoes the move at game initialization (No moves are made)*/
-            cout << "No moves to be undone\n";
-            return;
+            // cout << "No moves to be undone\n";
+            return false;
         }
 
         /* Get last move from history */
@@ -152,7 +154,8 @@ class GameEngine
         
         /* Revert the player */ 
         currentPlayer = lastMove.first.player;
-        cout << "Move has been undone!\n";
+        // cout << "Move has been undone!\n";
+        return true;
     }
 
     bool checkWin(char player) 

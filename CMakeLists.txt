@@ -36,7 +36,7 @@ add_library(game STATIC game_logic.cpp)
 # ===============================
 # Main executable
 # ===============================
-add_executable(xo_game main.cpp)
+add_executable(xo_game game_wrapper.cpp)
 
 if(OpenSSL_FOUND)
   target_link_libraries(xo_game ai sys game sqlite3 OpenSSL::Crypto)

@@ -150,6 +150,7 @@ bool UserSystem::saveGameWithMoves(const std::string& player1,
     sqlite3_exec(db, "BEGIN TRANSACTION;", nullptr, nullptr, nullptr);
     
     std::string winner_username;
+    
     if (winner == "X") 
     {
         winner_username = player1;
@@ -162,6 +163,7 @@ bool UserSystem::saveGameWithMoves(const std::string& player1,
     {
         winner_username = "Tie";
     }
+    // std::cout << "we're now at db received winner: " << winner << ", winner_username: " << winner_username << "\n";
     //Binds the player names and winner to the ? placeholders.
     const char* insert_game_sql =
         "INSERT INTO game_history (player1, player2, winner) VALUES (?, ?, ?);";
@@ -171,7 +173,7 @@ bool UserSystem::saveGameWithMoves(const std::string& player1,
     //Prepares to insert a new row in game history
     sqlite3_bind_text(stmt_game, 1, player1.c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt_game, 2, player2.c_str(), -1, SQLITE_STATIC);
-    sqlite3_bind_text(stmt_game, 3, winner.c_str(), -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt_game, 3, winner_username.c_str(), -1, SQLITE_STATIC);
 
     if (sqlite3_step(stmt_game) != SQLITE_DONE) 
     {
@@ -344,7 +346,7 @@ std::tuple<int, int, int> UserSystem::getHeadToHeadStats(const std::string& user
     //Each row represents one move of the game
     while (sqlite3_step(stmt) == SQLITE_ROW)
     {
-        const char* winner = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+        const std::string winner = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
         if (winner == "Tie") 
         {
             ++ties;
@@ -383,7 +385,7 @@ std::tuple<int, int, int> UserSystem::getHumanVsAIStats(const std::string& human
 
     while (sqlite3_step(stmt) == SQLITE_ROW)
     {
-        const char* winner = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 0));
+        const std::string winner = reinterpret_cast<const char*>(sqlite3_column_text(stmt, 2));
 
         if (winner == "Tie")
         {
@@ -397,7 +399,8 @@ std::tuple<int, int, int> UserSystem::getHumanVsAIStats(const std::string& human
         {
             ++aiWins;
         }
-
+        // std::cout << "we're at getHumanVsAIStats, winner: " << winner << ", human user: " << humanUser << "\n";
+        // std::cout << "humanWins: " << humanWins << ", aiWins: " << aiWins << ", ties: " << ties << "\n";
     }
     sqlite3_finalize(stmt);
     return std::make_tuple(humanWins, aiWins, ties);
