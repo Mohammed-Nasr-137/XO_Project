@@ -1,5 +1,0 @@
-if(EXISTS "/workspaces/XO_Project/build/test_ai[1]_tests.cmake")
-  include("/workspaces/XO_Project/build/test_ai[1]_tests.cmake")
-else()
-  add_test(test_ai_NOT_BUILT test_ai_NOT_BUILT)
-endif()
