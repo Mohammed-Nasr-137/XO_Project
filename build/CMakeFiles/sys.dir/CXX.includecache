@@ -6,25 +6,5 @@
 
 #IncludeRegexTransform: 
 
-/workspaces/XO_Project/user_system.cpp
-user_system.h
-/workspaces/XO_Project/user_system.h
-iostream
--
-sstream
--
-iomanip
--
-sstream
--
-openssl/sha.h
--
-
-/workspaces/XO_Project/user_system.h
-string
--
-sqlite3.h
--
-vector
--
+/workspaces/XO_Project/build/sys_autogen/mocs_compilation.cpp
 

@@ -5,60 +5,67 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# ===============================
-# Try to find OpenSSL first
-# ===============================
-find_package(OpenSSL QUIET)
-find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
+# Enable Qt's automatic code generation
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTORCC ON)
 
-if(NOT OpenSSL_FOUND)
-  message(STATUS "OpenSSL not found on system, fetching from source...")
+# Find Qt5
+find_package(Qt5 REQUIRED COMPONENTS Widgets Core Gui)
 
-  include(FetchContent)
-  FetchContent_Declare(
-    openssl
-    URL https://www.openssl.org/source/openssl-3.0.13.tar.gz
-  )
-
-  FetchContent_MakeAvailable(openssl)
-
-  # OpenSSL build produces static libs and headers in special folders
-  # You may need to point to the paths explicitly if needed
-  # Here we assume it will export OpenSSL::Crypto target
-endif()
-
-# ===============================
-# Add source code as libraries
-# ===============================
+# Your core libraries
 add_library(ai STATIC ai.cpp)
 add_library(sys STATIC user_system.cpp)
 add_library(game STATIC game_logic.cpp)
+add_library(wrapper STATIC game_wrapper.cpp)
 
-# ===============================
-# Main executable
-# ===============================
-add_executable(xo_game game_wrapper.cpp )
+# Build the Qt GUI executable (signup screen for now)
+# List all your .cpp/.h/.ui files here so CMake processes the UIs
+set(GUI_SOURCES
+    main.cpp 
+    signup.cpp
+    signup.h
+    signup.ui
+    mainwindow.cpp
+    mainwindow.h
+    mainwindow.ui
+    mainscreen.cpp
+    mainscreen.h
+    mainscreen.ui
+    # turnpage.cpp
+    # turnpage.h
+    # turnpage.ui
+    # aipage.cpp
+    # aipage.h
+    # aipage.ui
+    # ... add any other .cpp/.h/.ui you need
+)
 
-if(OpenSSL_FOUND)
-  target_link_libraries(xo_game ai sys game sqlite3 OpenSSL::Crypto Qt5::Core Qt5::Gui Qt5::Widgets)
-else()
-  target_link_libraries(xo_game ai sys game sqlite3 crypto Qt5::Core Qt5::Gui Qt5::Widgets)  # fallback to -lcrypto
-endif()
+add_executable(xo_game ${GUI_SOURCES})
 
-# ===============================
-# GoogleTest Setup
-# ===============================
+# Include Qt headers automatically
+target_link_libraries(xo_game
+    PRIVATE
+      ai
+      sys
+      game
+      wrapper
+      Qt5::Widgets
+      Qt5::Core
+      Qt5::Gui
+      sqlite3
+      # crypto or OpenSSL::Crypto as before
+)
+
+# (Optional) If you still need tests
 include(FetchContent)
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/refs/heads/main.zip
 )
 FetchContent_MakeAvailable(googletest)
-
 enable_testing()
-
 add_executable(test_ai test_ai.cpp)
 target_link_libraries(test_ai gtest_main ai)
-
 include(GoogleTest)
 gtest_discover_tests(test_ai)

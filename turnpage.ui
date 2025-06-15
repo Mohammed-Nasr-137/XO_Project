@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Turnpage</class>
+ <widget class="QMainWindow" name="Turnpage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>391</width>
+    <height>268</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background: qlineargradient(
+        spread: pad,
+        x1: 0, y1: 0,
+        x2: 1, y2: 1,
+        stop: 0 rgba(0, 34, 133, 180),
+        stop: 1 rgba(255, 255, 255, 80)
+    );
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox_p">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>140</y>
+      <width>201</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox {
+    border: none;
+}
+</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+    <widget class="QPushButton" name="start_game">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>50</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+    border: none;
+    color: white;
+    background-color: rgba(0, 120, 255, 180); /* أزرق شفاف */
+    font: bold 11pt &quot;Arial&quot;;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 144, 255, 220); /* أزرق أفتح عند المرور */
+    font: bold 12pt &quot;Arial&quot;;
+}
+
+QPushButton:pressed {
+    background-color: rgba(0, 80, 180, 255); /* أزرق داكن عند الضغط */
+    font: bold 12pt &quot;Arial&quot;;
+}
+
+QPushButton:disabled {
+    background-color: rgba(150, 150, 150, 100); /* رمادي فاتح شفاف */
+    color: rgba(255, 255, 255, 180); /* أبيض باهت */
+    font: bold 11pt &quot;Arial&quot;;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Start Game</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="back_tomain_p">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>190</y>
+      <width>141</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: none;
+    color: white;
+    background-color: rgba(0, 120, 255, 180); /* أزرق شفاف */
+    font: bold 11pt &quot;Arial&quot;;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 144, 255, 220); /* أزرق أفتح عند المرور */
+    font: bold 12pt &quot;Arial&quot;;
+}
+
+QPushButton:pressed {
+    background-color: rgba(0, 80, 180, 255); /* أزرق داكن عند الضغط */
+    font: bold 12pt &quot;Arial&quot;;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Back to Main</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="turn_label">
+    <property name="geometry">
+     <rect>
+      <x>-60</x>
+      <y>-10</y>
+      <width>501</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    background-color: qlineargradient(
+        x1: 0, y1: 0,
+        x2: 1, y2: 1,
+        stop: 0 rgba(30, 60, 114, 150),   /* Dark Blue with transparency */
+        stop: 1 rgba(42, 82, 152, 150)    /* Medium Blue with transparency */
+    );
+    color: white;
+    font: bold 20pt &quot;Segoe UI&quot;;
+    padding: 14px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 180); /* Semi-transparent white border */
+    qproperty-alignment: AlignCenter;
+}
+
+QLabel:hover {
+    background-color: qlineargradient(
+        x1: 1, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 rgba(58, 28, 113, 180),   /* Dark purple */
+        stop: 1 rgba(215, 109, 119, 180)  /* Pink with transparency */
+    );
+    color: #FFEB3B;
+    border: 2px solid #FFEB3B;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Player 1 Turn</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="turn_box">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>90</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 #e0f7fa, stop:1 #b2ebf2); /* gradient blue */
+    color: #004d40; /* deep teal text */
+    border: 2px solid #4dd0e1;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font: bold 12pt &quot;Segoe UI&quot;;
+    qproperty-alignment: AlignCenter; /* center text */
+}
+
+QComboBox:hover {
+    background-color: #b2ebf2;
+    border: 2px solid #00acc1;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 25px;
+    background: transparent;
+}
+
+QComboBox::down-arrow {
+    image: url(:/icons/arrow_down_dark.png); 
+    width: 14px;
+    height: 14px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #ffffff;
+    color: #004d40;
+    border: 1px solid #4dd0e1;
+    selection-background-color: #b2dfdb;
+    font: 11pt &quot;Segoe UI&quot;;
+}
+</string>
+    </property>
+    <property name="editable">
+     <bool>false</bool>
+    </property>
+    <property name="currentText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_p_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>201</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox {
+    border: none;
+}
+</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>391</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

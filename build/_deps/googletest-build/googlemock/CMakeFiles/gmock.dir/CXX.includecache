@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/workspaces/XO_Project/build/_deps/googletest-build/googlemock/gmock_autogen/mocs_compilation.cpp
+
 /workspaces/XO_Project/build/_deps/googletest-src/googlemock/src/gmock-all.cc
 gmock/gmock.h
 /workspaces/XO_Project/build/_deps/googletest-src/googlemock/src/gmock/gmock.h

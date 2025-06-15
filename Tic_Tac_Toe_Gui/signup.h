@@ -1,5 +1,6 @@
 #ifndef SIGNUP_H
 #define SIGNUP_H
+
 #include <QMessageBox>
 #include <QSpacerItem>
 #include <QGridLayout>

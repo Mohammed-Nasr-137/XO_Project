@@ -6,6 +6,8 @@
 
 #IncludeRegexTransform: 
 
+/workspaces/XO_Project/build/_deps/googletest-build/googletest/gtest_autogen/mocs_compilation.cpp
+
 /workspaces/XO_Project/build/_deps/googletest-src/googletest/src/gtest-all.cc
 gtest/gtest.h
 /workspaces/XO_Project/build/_deps/googletest-src/googletest/src/gtest/gtest.h

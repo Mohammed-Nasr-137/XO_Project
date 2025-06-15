@@ -197,6 +197,90 @@ gtest/fast:
 	cd /workspaces/XO_Project/build && $(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+# Convenience name for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/rule:
+	cd /workspaces/XO_Project/build && $(MAKE) -f CMakeFiles/Makefile2 _deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/rule
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/rule
+
+# Convenience name for target.
+gtest_main_autogen: _deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/rule
+
+.PHONY : gtest_main_autogen
+
+# fast build rule for target.
+gtest_main_autogen/fast:
+	cd /workspaces/XO_Project/build && $(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/build
+.PHONY : gtest_main_autogen/fast
+
+# Convenience name for target.
+_deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/rule:
+	cd /workspaces/XO_Project/build && $(MAKE) -f CMakeFiles/Makefile2 _deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/rule
+.PHONY : _deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/rule
+
+# Convenience name for target.
+gtest_autogen: _deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/rule
+
+.PHONY : gtest_autogen
+
+# fast build rule for target.
+gtest_autogen/fast:
+	cd /workspaces/XO_Project/build && $(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/build
+.PHONY : gtest_autogen/fast
+
+gtest_autogen/mocs_compilation.o: gtest_autogen/mocs_compilation.cpp.o
+
+.PHONY : gtest_autogen/mocs_compilation.o
+
+# target to build an object file
+gtest_autogen/mocs_compilation.cpp.o:
+	cd /workspaces/XO_Project/build && $(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/gtest_autogen/mocs_compilation.cpp.o
+.PHONY : gtest_autogen/mocs_compilation.cpp.o
+
+gtest_autogen/mocs_compilation.i: gtest_autogen/mocs_compilation.cpp.i
+
+.PHONY : gtest_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+gtest_autogen/mocs_compilation.cpp.i:
+	cd /workspaces/XO_Project/build && $(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/gtest_autogen/mocs_compilation.cpp.i
+.PHONY : gtest_autogen/mocs_compilation.cpp.i
+
+gtest_autogen/mocs_compilation.s: gtest_autogen/mocs_compilation.cpp.s
+
+.PHONY : gtest_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+gtest_autogen/mocs_compilation.cpp.s:
+	cd /workspaces/XO_Project/build && $(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/gtest_autogen/mocs_compilation.cpp.s
+.PHONY : gtest_autogen/mocs_compilation.cpp.s
+
+gtest_main_autogen/mocs_compilation.o: gtest_main_autogen/mocs_compilation.cpp.o
+
+.PHONY : gtest_main_autogen/mocs_compilation.o
+
+# target to build an object file
+gtest_main_autogen/mocs_compilation.cpp.o:
+	cd /workspaces/XO_Project/build && $(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/gtest_main_autogen/mocs_compilation.cpp.o
+.PHONY : gtest_main_autogen/mocs_compilation.cpp.o
+
+gtest_main_autogen/mocs_compilation.i: gtest_main_autogen/mocs_compilation.cpp.i
+
+.PHONY : gtest_main_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+gtest_main_autogen/mocs_compilation.cpp.i:
+	cd /workspaces/XO_Project/build && $(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/gtest_main_autogen/mocs_compilation.cpp.i
+.PHONY : gtest_main_autogen/mocs_compilation.cpp.i
+
+gtest_main_autogen/mocs_compilation.s: gtest_main_autogen/mocs_compilation.cpp.s
+
+.PHONY : gtest_main_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+gtest_main_autogen/mocs_compilation.cpp.s:
+	cd /workspaces/XO_Project/build && $(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/gtest_main_autogen/mocs_compilation.cpp.s
+.PHONY : gtest_main_autogen/mocs_compilation.cpp.s
+
 src/gtest-all.o: src/gtest-all.cc.o
 
 .PHONY : src/gtest-all.o
@@ -266,6 +350,14 @@ help:
 	@echo "... test"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... gtest_main_autogen"
+	@echo "... gtest_autogen"
+	@echo "... gtest_autogen/mocs_compilation.o"
+	@echo "... gtest_autogen/mocs_compilation.i"
+	@echo "... gtest_autogen/mocs_compilation.s"
+	@echo "... gtest_main_autogen/mocs_compilation.o"
+	@echo "... gtest_main_autogen/mocs_compilation.i"
+	@echo "... gtest_main_autogen/mocs_compilation.s"
 	@echo "... src/gtest-all.o"
 	@echo "... src/gtest-all.i"
 	@echo "... src/gtest-all.s"
