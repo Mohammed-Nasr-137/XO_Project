@@ -57,97 +57,34 @@ include CMakeFiles/xo_game.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/xo_game.dir/flags.make
 
-CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.o: CMakeFiles/xo_game.dir/flags.make
-CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.o: xo_game_autogen/mocs_compilation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.o -c /workspaces/XO_Project/build/xo_game_autogen/mocs_compilation.cpp
+CMakeFiles/xo_game.dir/game_wrapper.cpp.o: CMakeFiles/xo_game.dir/flags.make
+CMakeFiles/xo_game.dir/game_wrapper.cpp.o: ../game_wrapper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/xo_game.dir/game_wrapper.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xo_game.dir/game_wrapper.cpp.o -c /workspaces/XO_Project/game_wrapper.cpp
 
-CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/build/xo_game_autogen/mocs_compilation.cpp > CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.i
+CMakeFiles/xo_game.dir/game_wrapper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/xo_game.dir/game_wrapper.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/game_wrapper.cpp > CMakeFiles/xo_game.dir/game_wrapper.cpp.i
 
-CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/build/xo_game_autogen/mocs_compilation.cpp -o CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.s
-
-CMakeFiles/xo_game.dir/main.cpp.o: CMakeFiles/xo_game.dir/flags.make
-CMakeFiles/xo_game.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/xo_game.dir/main.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xo_game.dir/main.cpp.o -c /workspaces/XO_Project/main.cpp
-
-CMakeFiles/xo_game.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/xo_game.dir/main.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/main.cpp > CMakeFiles/xo_game.dir/main.cpp.i
-
-CMakeFiles/xo_game.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/xo_game.dir/main.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/main.cpp -o CMakeFiles/xo_game.dir/main.cpp.s
-
-CMakeFiles/xo_game.dir/signup.cpp.o: CMakeFiles/xo_game.dir/flags.make
-CMakeFiles/xo_game.dir/signup.cpp.o: ../signup.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/xo_game.dir/signup.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xo_game.dir/signup.cpp.o -c /workspaces/XO_Project/signup.cpp
-
-CMakeFiles/xo_game.dir/signup.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/xo_game.dir/signup.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/signup.cpp > CMakeFiles/xo_game.dir/signup.cpp.i
-
-CMakeFiles/xo_game.dir/signup.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/xo_game.dir/signup.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/signup.cpp -o CMakeFiles/xo_game.dir/signup.cpp.s
-
-CMakeFiles/xo_game.dir/mainwindow.cpp.o: CMakeFiles/xo_game.dir/flags.make
-CMakeFiles/xo_game.dir/mainwindow.cpp.o: ../mainwindow.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/xo_game.dir/mainwindow.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xo_game.dir/mainwindow.cpp.o -c /workspaces/XO_Project/mainwindow.cpp
-
-CMakeFiles/xo_game.dir/mainwindow.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/xo_game.dir/mainwindow.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/mainwindow.cpp > CMakeFiles/xo_game.dir/mainwindow.cpp.i
-
-CMakeFiles/xo_game.dir/mainwindow.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/xo_game.dir/mainwindow.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/mainwindow.cpp -o CMakeFiles/xo_game.dir/mainwindow.cpp.s
-
-CMakeFiles/xo_game.dir/mainscreen.cpp.o: CMakeFiles/xo_game.dir/flags.make
-CMakeFiles/xo_game.dir/mainscreen.cpp.o: ../mainscreen.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/xo_game.dir/mainscreen.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/xo_game.dir/mainscreen.cpp.o -c /workspaces/XO_Project/mainscreen.cpp
-
-CMakeFiles/xo_game.dir/mainscreen.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/xo_game.dir/mainscreen.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/mainscreen.cpp > CMakeFiles/xo_game.dir/mainscreen.cpp.i
-
-CMakeFiles/xo_game.dir/mainscreen.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/xo_game.dir/mainscreen.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/mainscreen.cpp -o CMakeFiles/xo_game.dir/mainscreen.cpp.s
+CMakeFiles/xo_game.dir/game_wrapper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/xo_game.dir/game_wrapper.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/game_wrapper.cpp -o CMakeFiles/xo_game.dir/game_wrapper.cpp.s
 
 # Object files for target xo_game
 xo_game_OBJECTS = \
-"CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/xo_game.dir/main.cpp.o" \
-"CMakeFiles/xo_game.dir/signup.cpp.o" \
-"CMakeFiles/xo_game.dir/mainwindow.cpp.o" \
-"CMakeFiles/xo_game.dir/mainscreen.cpp.o"
+"CMakeFiles/xo_game.dir/game_wrapper.cpp.o"
 
 # External object files for target xo_game
 xo_game_EXTERNAL_OBJECTS =
 
-xo_game: CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.o
-xo_game: CMakeFiles/xo_game.dir/main.cpp.o
-xo_game: CMakeFiles/xo_game.dir/signup.cpp.o
-xo_game: CMakeFiles/xo_game.dir/mainwindow.cpp.o
-xo_game: CMakeFiles/xo_game.dir/mainscreen.cpp.o
+xo_game: CMakeFiles/xo_game.dir/game_wrapper.cpp.o
 xo_game: CMakeFiles/xo_game.dir/build.make
 xo_game: libai.a
 xo_game: libsys.a
 xo_game: libgame.a
-xo_game: libwrapper.a
-xo_game: /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.12.8
-xo_game: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.12.8
-xo_game: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8
+xo_game: /usr/lib/x86_64-linux-gnu/libcrypto.so
 xo_game: CMakeFiles/xo_game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable xo_game"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable xo_game"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/xo_game.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

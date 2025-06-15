@@ -1,8 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/game_autogen.dir/AutogenUsed.txt"
-  "CMakeFiles/game_autogen.dir/ParseCache.txt"
-  "game_autogen"
-  "CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.o"
   "CMakeFiles/game.dir/game_logic.cpp.o"
   "libgame.a"
   "libgame.pdb"

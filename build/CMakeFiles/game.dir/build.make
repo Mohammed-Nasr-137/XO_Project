@@ -57,45 +57,30 @@ include CMakeFiles/game.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/game.dir/flags.make
 
-CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.o: CMakeFiles/game.dir/flags.make
-CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.o: game_autogen/mocs_compilation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.o -c /workspaces/XO_Project/build/game_autogen/mocs_compilation.cpp
-
-CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/build/game_autogen/mocs_compilation.cpp > CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.i
-
-CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/build/game_autogen/mocs_compilation.cpp -o CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.s
-
 CMakeFiles/game.dir/game_logic.cpp.o: CMakeFiles/game.dir/flags.make
 CMakeFiles/game.dir/game_logic.cpp.o: ../game_logic.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/game.dir/game_logic.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/game.dir/game_logic.cpp.o -c /workspaces/XO_Project/game_logic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/game.dir/game_logic.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/game.dir/game_logic.cpp.o -c /workspaces/XO_Project/game_logic.cpp
 
 CMakeFiles/game.dir/game_logic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/game.dir/game_logic.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/game_logic.cpp > CMakeFiles/game.dir/game_logic.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/game_logic.cpp > CMakeFiles/game.dir/game_logic.cpp.i
 
 CMakeFiles/game.dir/game_logic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/game.dir/game_logic.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/game_logic.cpp -o CMakeFiles/game.dir/game_logic.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/game_logic.cpp -o CMakeFiles/game.dir/game_logic.cpp.s
 
 # Object files for target game
 game_OBJECTS = \
-"CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/game.dir/game_logic.cpp.o"
 
 # External object files for target game
 game_EXTERNAL_OBJECTS =
 
-libgame.a: CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.o
 libgame.a: CMakeFiles/game.dir/game_logic.cpp.o
 libgame.a: CMakeFiles/game.dir/build.make
 libgame.a: CMakeFiles/game.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libgame.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libgame.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/game.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/game.dir/link.txt --verbose=$(VERBOSE)
 

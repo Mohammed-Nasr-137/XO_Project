@@ -1,9 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ai_autogen.dir/AutogenUsed.txt"
-  "CMakeFiles/ai_autogen.dir/ParseCache.txt"
-  "ai_autogen"
   "CMakeFiles/ai.dir/ai.cpp.o"
-  "CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.o"
   "libai.a"
   "libai.pdb"
 )

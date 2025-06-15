@@ -57,45 +57,30 @@ include CMakeFiles/ai.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ai.dir/flags.make
 
-CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.o: CMakeFiles/ai.dir/flags.make
-CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.o: ai_autogen/mocs_compilation.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.o -c /workspaces/XO_Project/build/ai_autogen/mocs_compilation.cpp
-
-CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/build/ai_autogen/mocs_compilation.cpp > CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.i
-
-CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/build/ai_autogen/mocs_compilation.cpp -o CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.s
-
 CMakeFiles/ai.dir/ai.cpp.o: CMakeFiles/ai.dir/flags.make
 CMakeFiles/ai.dir/ai.cpp.o: ../ai.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ai.dir/ai.cpp.o"
-	/usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ai.dir/ai.cpp.o -c /workspaces/XO_Project/ai.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ai.dir/ai.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/ai.dir/ai.cpp.o -c /workspaces/XO_Project/ai.cpp
 
 CMakeFiles/ai.dir/ai.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ai.dir/ai.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/ai.cpp > CMakeFiles/ai.dir/ai.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/ai.cpp > CMakeFiles/ai.dir/ai.cpp.i
 
 CMakeFiles/ai.dir/ai.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ai.dir/ai.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/ai.cpp -o CMakeFiles/ai.dir/ai.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/ai.cpp -o CMakeFiles/ai.dir/ai.cpp.s
 
 # Object files for target ai
 ai_OBJECTS = \
-"CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/ai.dir/ai.cpp.o"
 
 # External object files for target ai
 ai_EXTERNAL_OBJECTS =
 
-libai.a: CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.o
 libai.a: CMakeFiles/ai.dir/ai.cpp.o
 libai.a: CMakeFiles/ai.dir/build.make
 libai.a: CMakeFiles/ai.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libai.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libai.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/ai.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ai.dir/link.txt --verbose=$(VERBOSE)
 

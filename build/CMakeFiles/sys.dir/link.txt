@@ -1,2 +1,2 @@
-/usr/bin/ar qc libsys.a  CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.o CMakeFiles/sys.dir/user_system.cpp.o
+/usr/bin/ar qc libsys.a  CMakeFiles/sys.dir/user_system.cpp.o
 /usr/bin/ranlib libsys.a

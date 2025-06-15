@@ -6,5 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/workspaces/XO_Project/build/ai_autogen/mocs_compilation.cpp
+/workspaces/XO_Project/ai.cpp
+ai.h
+/workspaces/XO_Project/ai.h
+limits
+-
+cstdlib
+-
+ctime
+-
+string
+-
+iostream
+-
+
+/workspaces/XO_Project/ai.h
+vector
+-
+utility
+-
+string
+-
+map
+-
 

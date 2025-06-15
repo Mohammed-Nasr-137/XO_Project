@@ -1,1 +1,1 @@
-/usr/bin/clang++  -g   CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.o CMakeFiles/test_ai.dir/test_ai.cpp.o  -o test_ai  lib/libgtest_main.a libai.a lib/libgtest.a -lpthread 
+/usr/bin/c++     CMakeFiles/test_ai.dir/test_ai.cpp.o  -o test_ai  lib/libgtest_main.a libai.a lib/libgtest.a -lpthread 
