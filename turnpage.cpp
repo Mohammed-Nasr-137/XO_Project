@@ -1,0 +1,36 @@
+#include "turnpage.h"
+#include "ui_turnpage.h"
+#include"mainscreen.h"
+#include "GameData.h"
+# include <QDebug>
+#include <QSettings>
+Turnpage::Turnpage(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::Turnpage)
+{
+    ui->setupUi(this);
+    ui->start_game->setEnabled(false);
+    ui->turn_box->addItem("❌");
+    ui->turn_box->addItem("⭕");
+}
+Turnpage::~Turnpage()
+{
+    delete ui;
+}
+void Turnpage::on_back_tomain_p_clicked()
+{
+    this->hide();
+    MainScreen*mainscreen=new MainScreen();
+    mainscreen->show();
+}
+void Turnpage::on_turn_box_currentTextChanged(const QString &arg1)
+{
+      GameData::instance().P1turn = arg1;
+    if(arg1=="❌"){
+          GameData::instance().Anotherturn ="⭕" ;
+    }
+    else {
+        GameData::instance().Anotherturn ="❌" ;
+    }
+   ui->start_game->setEnabled(true);
+}
