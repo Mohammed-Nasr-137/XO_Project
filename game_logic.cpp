@@ -1,4 +1,4 @@
-#include <iostream>
+// #include <iostream>
 #include <vector>
 #include <string>
 #include "ai.cpp"
@@ -158,12 +158,12 @@ class GameEngine
         return true;
     }
 
-    bool checkWin(char player) 
+    bool checkWin(string player) 
     {
         int row, col;
 
         /* The target sum for this player, where val is 1 for X and -1 for O */
-        int val = (player == 'X') ? 1 : -1; 
+        int val = (player == "X") ? 1 : -1; 
 
         /* Check rows and columns */ 
         for (row = 0; row < 3; ++row)
@@ -211,7 +211,7 @@ class GameEngine
     bool isGameOver()
     {
         /* Check if either player has won */ 
-        if (checkWin('X') || checkWin('O'))
+        if (checkWin("X") || checkWin("O"))
         {
             /* Game Over */
             return true;
