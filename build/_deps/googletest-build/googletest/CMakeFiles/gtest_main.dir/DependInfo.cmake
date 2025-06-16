@@ -4,12 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/workspaces/XO_Project/build/_deps/googletest-build/googletest/gtest_main_autogen/mocs_compilation.cpp" "/workspaces/XO_Project/build/_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/gtest_main_autogen/mocs_compilation.cpp.o"
   "/workspaces/XO_Project/build/_deps/googletest-src/googletest/src/gtest_main.cc" "/workspaces/XO_Project/build/_deps/googletest-build/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "_deps/googletest-build/googletest/gtest_main_autogen/include"
   "_deps/googletest-src/googletest/include"
   "_deps/googletest-src/googletest"
   )

@@ -57,9 +57,22 @@ include CMakeFiles/sys.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/sys.dir/flags.make
 
+CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.o: CMakeFiles/sys.dir/flags.make
+CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.o: sys_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.o -c /workspaces/XO_Project/build/sys_autogen/mocs_compilation.cpp
+
+CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/build/sys_autogen/mocs_compilation.cpp > CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.i
+
+CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/build/sys_autogen/mocs_compilation.cpp -o CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.s
+
 CMakeFiles/sys.dir/user_system.cpp.o: CMakeFiles/sys.dir/flags.make
 CMakeFiles/sys.dir/user_system.cpp.o: ../user_system.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sys.dir/user_system.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sys.dir/user_system.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sys.dir/user_system.cpp.o -c /workspaces/XO_Project/user_system.cpp
 
 CMakeFiles/sys.dir/user_system.cpp.i: cmake_force
@@ -72,15 +85,17 @@ CMakeFiles/sys.dir/user_system.cpp.s: cmake_force
 
 # Object files for target sys
 sys_OBJECTS = \
+"CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/sys.dir/user_system.cpp.o"
 
 # External object files for target sys
 sys_EXTERNAL_OBJECTS =
 
+libsys.a: CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.o
 libsys.a: CMakeFiles/sys.dir/user_system.cpp.o
 libsys.a: CMakeFiles/sys.dir/build.make
 libsys.a: CMakeFiles/sys.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libsys.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libsys.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/sys.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sys.dir/link.txt --verbose=$(VERBOSE)
 

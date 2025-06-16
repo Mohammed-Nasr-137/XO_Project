@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgame_wrapper.a  CMakeFiles/game_wrapper.dir/game_wrapper_autogen/mocs_compilation.cpp.o CMakeFiles/game_wrapper.dir/game_wrapper.cpp.o
+/usr/bin/ranlib libgame_wrapper.a

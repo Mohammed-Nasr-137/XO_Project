@@ -6,5 +6,5 @@ CXX_FLAGS =   -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREA
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /workspaces/XO_Project/build/_deps/googletest-src/googletest/include -isystem /workspaces/XO_Project/build/_deps/googletest-src/googletest 
+CXX_INCLUDES = -I/workspaces/XO_Project/build/_deps/googletest-build/googletest/gtest_main_autogen/include -isystem /workspaces/XO_Project/build/_deps/googletest-src/googletest/include -isystem /workspaces/XO_Project/build/_deps/googletest-src/googletest 
 

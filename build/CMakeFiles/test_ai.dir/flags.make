@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /workspaces/XO_Project/build/_deps/googletest-src/googletest/include -isystem /workspaces/XO_Project/build/_deps/googletest-src/googletest 
+CXX_INCLUDES = -I/workspaces/XO_Project/build/test_ai_autogen/include -isystem /workspaces/XO_Project/build/_deps/googletest-src/googletest/include -isystem /workspaces/XO_Project/build/_deps/googletest-src/googletest 
 

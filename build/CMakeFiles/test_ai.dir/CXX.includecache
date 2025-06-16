@@ -16,6 +16,8 @@ string
 map
 -
 
+/workspaces/XO_Project/build/test_ai_autogen/mocs_compilation.cpp
+
 /workspaces/XO_Project/test_ai.cpp
 gtest/gtest.h
 -

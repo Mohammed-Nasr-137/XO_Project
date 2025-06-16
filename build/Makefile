@@ -220,6 +220,19 @@ sys/fast:
 .PHONY : sys/fast
 
 #=============================================================================
+# Target rules for targets named game_wrapper
+
+# Build rule for target.
+game_wrapper: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 game_wrapper
+.PHONY : game_wrapper
+
+# fast build rule for target.
+game_wrapper/fast:
+	$(MAKE) -f CMakeFiles/game_wrapper.dir/build.make CMakeFiles/game_wrapper.dir/build
+.PHONY : game_wrapper/fast
+
+#=============================================================================
 # Target rules for targets named ai
 
 # Build rule for target.
@@ -231,6 +244,84 @@ ai: cmake_check_build_system
 ai/fast:
 	$(MAKE) -f CMakeFiles/ai.dir/build.make CMakeFiles/ai.dir/build
 .PHONY : ai/fast
+
+#=============================================================================
+# Target rules for targets named test_ai_autogen
+
+# Build rule for target.
+test_ai_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_ai_autogen
+.PHONY : test_ai_autogen
+
+# fast build rule for target.
+test_ai_autogen/fast:
+	$(MAKE) -f CMakeFiles/test_ai_autogen.dir/build.make CMakeFiles/test_ai_autogen.dir/build
+.PHONY : test_ai_autogen/fast
+
+#=============================================================================
+# Target rules for targets named xo_game_autogen
+
+# Build rule for target.
+xo_game_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 xo_game_autogen
+.PHONY : xo_game_autogen
+
+# fast build rule for target.
+xo_game_autogen/fast:
+	$(MAKE) -f CMakeFiles/xo_game_autogen.dir/build.make CMakeFiles/xo_game_autogen.dir/build
+.PHONY : xo_game_autogen/fast
+
+#=============================================================================
+# Target rules for targets named game_autogen
+
+# Build rule for target.
+game_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 game_autogen
+.PHONY : game_autogen
+
+# fast build rule for target.
+game_autogen/fast:
+	$(MAKE) -f CMakeFiles/game_autogen.dir/build.make CMakeFiles/game_autogen.dir/build
+.PHONY : game_autogen/fast
+
+#=============================================================================
+# Target rules for targets named sys_autogen
+
+# Build rule for target.
+sys_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sys_autogen
+.PHONY : sys_autogen
+
+# fast build rule for target.
+sys_autogen/fast:
+	$(MAKE) -f CMakeFiles/sys_autogen.dir/build.make CMakeFiles/sys_autogen.dir/build
+.PHONY : sys_autogen/fast
+
+#=============================================================================
+# Target rules for targets named game_wrapper_autogen
+
+# Build rule for target.
+game_wrapper_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 game_wrapper_autogen
+.PHONY : game_wrapper_autogen
+
+# fast build rule for target.
+game_wrapper_autogen/fast:
+	$(MAKE) -f CMakeFiles/game_wrapper_autogen.dir/build.make CMakeFiles/game_wrapper_autogen.dir/build
+.PHONY : game_wrapper_autogen/fast
+
+#=============================================================================
+# Target rules for targets named ai_autogen
+
+# Build rule for target.
+ai_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ai_autogen
+.PHONY : ai_autogen
+
+# fast build rule for target.
+ai_autogen/fast:
+	$(MAKE) -f CMakeFiles/ai_autogen.dir/build.make CMakeFiles/ai_autogen.dir/build
+.PHONY : ai_autogen/fast
 
 #=============================================================================
 # Target rules for targets named gmock_main
@@ -259,6 +350,32 @@ gmock/fast:
 .PHONY : gmock/fast
 
 #=============================================================================
+# Target rules for targets named gmock_main_autogen
+
+# Build rule for target.
+gmock_main_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock_main_autogen
+.PHONY : gmock_main_autogen
+
+# fast build rule for target.
+gmock_main_autogen/fast:
+	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_main_autogen.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_main_autogen.dir/build
+.PHONY : gmock_main_autogen/fast
+
+#=============================================================================
+# Target rules for targets named gmock_autogen
+
+# Build rule for target.
+gmock_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock_autogen
+.PHONY : gmock_autogen
+
+# fast build rule for target.
+gmock_autogen/fast:
+	$(MAKE) -f _deps/googletest-build/googlemock/CMakeFiles/gmock_autogen.dir/build.make _deps/googletest-build/googlemock/CMakeFiles/gmock_autogen.dir/build
+.PHONY : gmock_autogen/fast
+
+#=============================================================================
 # Target rules for targets named gtest_main
 
 # Build rule for target.
@@ -284,12 +401,39 @@ gtest/fast:
 	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest.dir/build
 .PHONY : gtest/fast
 
+#=============================================================================
+# Target rules for targets named gtest_main_autogen
+
+# Build rule for target.
+gtest_main_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest_main_autogen
+.PHONY : gtest_main_autogen
+
+# fast build rule for target.
+gtest_main_autogen/fast:
+	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_main_autogen.dir/build
+.PHONY : gtest_main_autogen/fast
+
+#=============================================================================
+# Target rules for targets named gtest_autogen
+
+# Build rule for target.
+gtest_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest_autogen
+.PHONY : gtest_autogen
+
+# fast build rule for target.
+gtest_autogen/fast:
+	$(MAKE) -f _deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/build.make _deps/googletest-build/googletest/CMakeFiles/gtest_autogen.dir/build
+.PHONY : gtest_autogen/fast
+
 ai.o: ai.cpp.o
 
 .PHONY : ai.o
 
 # target to build an object file
 ai.cpp.o:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/ai.cpp.o
 	$(MAKE) -f CMakeFiles/ai.dir/build.make CMakeFiles/ai.dir/ai.cpp.o
 .PHONY : ai.cpp.o
 
@@ -299,6 +443,7 @@ ai.i: ai.cpp.i
 
 # target to preprocess a source file
 ai.cpp.i:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/ai.cpp.i
 	$(MAKE) -f CMakeFiles/ai.dir/build.make CMakeFiles/ai.dir/ai.cpp.i
 .PHONY : ai.cpp.i
 
@@ -308,8 +453,63 @@ ai.s: ai.cpp.s
 
 # target to generate assembly for a file
 ai.cpp.s:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/ai.cpp.s
 	$(MAKE) -f CMakeFiles/ai.dir/build.make CMakeFiles/ai.dir/ai.cpp.s
 .PHONY : ai.cpp.s
+
+ai_autogen/mocs_compilation.o: ai_autogen/mocs_compilation.cpp.o
+
+.PHONY : ai_autogen/mocs_compilation.o
+
+# target to build an object file
+ai_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/ai.dir/build.make CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.o
+.PHONY : ai_autogen/mocs_compilation.cpp.o
+
+ai_autogen/mocs_compilation.i: ai_autogen/mocs_compilation.cpp.i
+
+.PHONY : ai_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+ai_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/ai.dir/build.make CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.i
+.PHONY : ai_autogen/mocs_compilation.cpp.i
+
+ai_autogen/mocs_compilation.s: ai_autogen/mocs_compilation.cpp.s
+
+.PHONY : ai_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+ai_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/ai.dir/build.make CMakeFiles/ai.dir/ai_autogen/mocs_compilation.cpp.s
+.PHONY : ai_autogen/mocs_compilation.cpp.s
+
+game_autogen/mocs_compilation.o: game_autogen/mocs_compilation.cpp.o
+
+.PHONY : game_autogen/mocs_compilation.o
+
+# target to build an object file
+game_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.o
+.PHONY : game_autogen/mocs_compilation.cpp.o
+
+game_autogen/mocs_compilation.i: game_autogen/mocs_compilation.cpp.i
+
+.PHONY : game_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+game_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.i
+.PHONY : game_autogen/mocs_compilation.cpp.i
+
+game_autogen/mocs_compilation.s: game_autogen/mocs_compilation.cpp.s
+
+.PHONY : game_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+game_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.s
+.PHONY : game_autogen/mocs_compilation.cpp.s
 
 game_logic.o: game_logic.cpp.o
 
@@ -317,6 +517,7 @@ game_logic.o: game_logic.cpp.o
 
 # target to build an object file
 game_logic.cpp.o:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/game_logic.cpp.o
 	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_logic.cpp.o
 .PHONY : game_logic.cpp.o
 
@@ -326,6 +527,7 @@ game_logic.i: game_logic.cpp.i
 
 # target to preprocess a source file
 game_logic.cpp.i:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/game_logic.cpp.i
 	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_logic.cpp.i
 .PHONY : game_logic.cpp.i
 
@@ -335,6 +537,7 @@ game_logic.s: game_logic.cpp.s
 
 # target to generate assembly for a file
 game_logic.cpp.s:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/game_logic.cpp.s
 	$(MAKE) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/game_logic.cpp.s
 .PHONY : game_logic.cpp.s
 
@@ -345,6 +548,7 @@ game_wrapper.o: game_wrapper.cpp.o
 # target to build an object file
 game_wrapper.cpp.o:
 	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/game_wrapper.cpp.o
+	$(MAKE) -f CMakeFiles/game_wrapper.dir/build.make CMakeFiles/game_wrapper.dir/game_wrapper.cpp.o
 .PHONY : game_wrapper.cpp.o
 
 game_wrapper.i: game_wrapper.cpp.i
@@ -354,6 +558,7 @@ game_wrapper.i: game_wrapper.cpp.i
 # target to preprocess a source file
 game_wrapper.cpp.i:
 	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/game_wrapper.cpp.i
+	$(MAKE) -f CMakeFiles/game_wrapper.dir/build.make CMakeFiles/game_wrapper.dir/game_wrapper.cpp.i
 .PHONY : game_wrapper.cpp.i
 
 game_wrapper.s: game_wrapper.cpp.s
@@ -363,7 +568,116 @@ game_wrapper.s: game_wrapper.cpp.s
 # target to generate assembly for a file
 game_wrapper.cpp.s:
 	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/game_wrapper.cpp.s
+	$(MAKE) -f CMakeFiles/game_wrapper.dir/build.make CMakeFiles/game_wrapper.dir/game_wrapper.cpp.s
 .PHONY : game_wrapper.cpp.s
+
+game_wrapper_autogen/mocs_compilation.o: game_wrapper_autogen/mocs_compilation.cpp.o
+
+.PHONY : game_wrapper_autogen/mocs_compilation.o
+
+# target to build an object file
+game_wrapper_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/game_wrapper.dir/build.make CMakeFiles/game_wrapper.dir/game_wrapper_autogen/mocs_compilation.cpp.o
+.PHONY : game_wrapper_autogen/mocs_compilation.cpp.o
+
+game_wrapper_autogen/mocs_compilation.i: game_wrapper_autogen/mocs_compilation.cpp.i
+
+.PHONY : game_wrapper_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+game_wrapper_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/game_wrapper.dir/build.make CMakeFiles/game_wrapper.dir/game_wrapper_autogen/mocs_compilation.cpp.i
+.PHONY : game_wrapper_autogen/mocs_compilation.cpp.i
+
+game_wrapper_autogen/mocs_compilation.s: game_wrapper_autogen/mocs_compilation.cpp.s
+
+.PHONY : game_wrapper_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+game_wrapper_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/game_wrapper.dir/build.make CMakeFiles/game_wrapper.dir/game_wrapper_autogen/mocs_compilation.cpp.s
+.PHONY : game_wrapper_autogen/mocs_compilation.cpp.s
+
+main.o: main.cpp.o
+
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/main.cpp.s
+.PHONY : main.cpp.s
+
+mainwindow.o: mainwindow.cpp.o
+
+.PHONY : mainwindow.o
+
+# target to build an object file
+mainwindow.cpp.o:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/mainwindow.cpp.o
+.PHONY : mainwindow.cpp.o
+
+mainwindow.i: mainwindow.cpp.i
+
+.PHONY : mainwindow.i
+
+# target to preprocess a source file
+mainwindow.cpp.i:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/mainwindow.cpp.i
+.PHONY : mainwindow.cpp.i
+
+mainwindow.s: mainwindow.cpp.s
+
+.PHONY : mainwindow.s
+
+# target to generate assembly for a file
+mainwindow.cpp.s:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/mainwindow.cpp.s
+.PHONY : mainwindow.cpp.s
+
+sys_autogen/mocs_compilation.o: sys_autogen/mocs_compilation.cpp.o
+
+.PHONY : sys_autogen/mocs_compilation.o
+
+# target to build an object file
+sys_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/sys.dir/build.make CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.o
+.PHONY : sys_autogen/mocs_compilation.cpp.o
+
+sys_autogen/mocs_compilation.i: sys_autogen/mocs_compilation.cpp.i
+
+.PHONY : sys_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+sys_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/sys.dir/build.make CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.i
+.PHONY : sys_autogen/mocs_compilation.cpp.i
+
+sys_autogen/mocs_compilation.s: sys_autogen/mocs_compilation.cpp.s
+
+.PHONY : sys_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+sys_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/sys.dir/build.make CMakeFiles/sys.dir/sys_autogen/mocs_compilation.cpp.s
+.PHONY : sys_autogen/mocs_compilation.cpp.s
 
 test_ai.o: test_ai.cpp.o
 
@@ -392,12 +706,40 @@ test_ai.cpp.s:
 	$(MAKE) -f CMakeFiles/test_ai.dir/build.make CMakeFiles/test_ai.dir/test_ai.cpp.s
 .PHONY : test_ai.cpp.s
 
+test_ai_autogen/mocs_compilation.o: test_ai_autogen/mocs_compilation.cpp.o
+
+.PHONY : test_ai_autogen/mocs_compilation.o
+
+# target to build an object file
+test_ai_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/test_ai.dir/build.make CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.o
+.PHONY : test_ai_autogen/mocs_compilation.cpp.o
+
+test_ai_autogen/mocs_compilation.i: test_ai_autogen/mocs_compilation.cpp.i
+
+.PHONY : test_ai_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+test_ai_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/test_ai.dir/build.make CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.i
+.PHONY : test_ai_autogen/mocs_compilation.cpp.i
+
+test_ai_autogen/mocs_compilation.s: test_ai_autogen/mocs_compilation.cpp.s
+
+.PHONY : test_ai_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+test_ai_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/test_ai.dir/build.make CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.s
+.PHONY : test_ai_autogen/mocs_compilation.cpp.s
+
 user_system.o: user_system.cpp.o
 
 .PHONY : user_system.o
 
 # target to build an object file
 user_system.cpp.o:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/user_system.cpp.o
 	$(MAKE) -f CMakeFiles/sys.dir/build.make CMakeFiles/sys.dir/user_system.cpp.o
 .PHONY : user_system.cpp.o
 
@@ -407,6 +749,7 @@ user_system.i: user_system.cpp.i
 
 # target to preprocess a source file
 user_system.cpp.i:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/user_system.cpp.i
 	$(MAKE) -f CMakeFiles/sys.dir/build.make CMakeFiles/sys.dir/user_system.cpp.i
 .PHONY : user_system.cpp.i
 
@@ -416,8 +759,36 @@ user_system.s: user_system.cpp.s
 
 # target to generate assembly for a file
 user_system.cpp.s:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/user_system.cpp.s
 	$(MAKE) -f CMakeFiles/sys.dir/build.make CMakeFiles/sys.dir/user_system.cpp.s
 .PHONY : user_system.cpp.s
+
+xo_game_autogen/mocs_compilation.o: xo_game_autogen/mocs_compilation.cpp.o
+
+.PHONY : xo_game_autogen/mocs_compilation.o
+
+# target to build an object file
+xo_game_autogen/mocs_compilation.cpp.o:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.o
+.PHONY : xo_game_autogen/mocs_compilation.cpp.o
+
+xo_game_autogen/mocs_compilation.i: xo_game_autogen/mocs_compilation.cpp.i
+
+.PHONY : xo_game_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+xo_game_autogen/mocs_compilation.cpp.i:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.i
+.PHONY : xo_game_autogen/mocs_compilation.cpp.i
+
+xo_game_autogen/mocs_compilation.s: xo_game_autogen/mocs_compilation.cpp.s
+
+.PHONY : xo_game_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+xo_game_autogen/mocs_compilation.cpp.s:
+	$(MAKE) -f CMakeFiles/xo_game.dir/build.make CMakeFiles/xo_game.dir/xo_game_autogen/mocs_compilation.cpp.s
+.PHONY : xo_game_autogen/mocs_compilation.cpp.s
 
 # Help Target
 help:
@@ -436,26 +807,61 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... sys"
+	@echo "... game_wrapper"
 	@echo "... ai"
+	@echo "... test_ai_autogen"
+	@echo "... xo_game_autogen"
+	@echo "... game_autogen"
+	@echo "... sys_autogen"
+	@echo "... game_wrapper_autogen"
+	@echo "... ai_autogen"
 	@echo "... gmock_main"
 	@echo "... gmock"
+	@echo "... gmock_main_autogen"
+	@echo "... gmock_autogen"
 	@echo "... gtest_main"
 	@echo "... gtest"
+	@echo "... gtest_main_autogen"
+	@echo "... gtest_autogen"
 	@echo "... ai.o"
 	@echo "... ai.i"
 	@echo "... ai.s"
+	@echo "... ai_autogen/mocs_compilation.o"
+	@echo "... ai_autogen/mocs_compilation.i"
+	@echo "... ai_autogen/mocs_compilation.s"
+	@echo "... game_autogen/mocs_compilation.o"
+	@echo "... game_autogen/mocs_compilation.i"
+	@echo "... game_autogen/mocs_compilation.s"
 	@echo "... game_logic.o"
 	@echo "... game_logic.i"
 	@echo "... game_logic.s"
 	@echo "... game_wrapper.o"
 	@echo "... game_wrapper.i"
 	@echo "... game_wrapper.s"
+	@echo "... game_wrapper_autogen/mocs_compilation.o"
+	@echo "... game_wrapper_autogen/mocs_compilation.i"
+	@echo "... game_wrapper_autogen/mocs_compilation.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
+	@echo "... mainwindow.o"
+	@echo "... mainwindow.i"
+	@echo "... mainwindow.s"
+	@echo "... sys_autogen/mocs_compilation.o"
+	@echo "... sys_autogen/mocs_compilation.i"
+	@echo "... sys_autogen/mocs_compilation.s"
 	@echo "... test_ai.o"
 	@echo "... test_ai.i"
 	@echo "... test_ai.s"
+	@echo "... test_ai_autogen/mocs_compilation.o"
+	@echo "... test_ai_autogen/mocs_compilation.i"
+	@echo "... test_ai_autogen/mocs_compilation.s"
 	@echo "... user_system.o"
 	@echo "... user_system.i"
 	@echo "... user_system.s"
+	@echo "... xo_game_autogen/mocs_compilation.o"
+	@echo "... xo_game_autogen/mocs_compilation.i"
+	@echo "... xo_game_autogen/mocs_compilation.s"
 .PHONY : help
 
 

@@ -57,9 +57,22 @@ include CMakeFiles/test_ai.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test_ai.dir/flags.make
 
+CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.o: CMakeFiles/test_ai.dir/flags.make
+CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.o: test_ai_autogen/mocs_compilation.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.o -c /workspaces/XO_Project/build/test_ai_autogen/mocs_compilation.cpp
+
+CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspaces/XO_Project/build/test_ai_autogen/mocs_compilation.cpp > CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.i
+
+CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspaces/XO_Project/build/test_ai_autogen/mocs_compilation.cpp -o CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.s
+
 CMakeFiles/test_ai.dir/test_ai.cpp.o: CMakeFiles/test_ai.dir/flags.make
 CMakeFiles/test_ai.dir/test_ai.cpp.o: ../test_ai.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_ai.dir/test_ai.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test_ai.dir/test_ai.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_ai.dir/test_ai.cpp.o -c /workspaces/XO_Project/test_ai.cpp
 
 CMakeFiles/test_ai.dir/test_ai.cpp.i: cmake_force
@@ -72,18 +85,20 @@ CMakeFiles/test_ai.dir/test_ai.cpp.s: cmake_force
 
 # Object files for target test_ai
 test_ai_OBJECTS = \
+"CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/test_ai.dir/test_ai.cpp.o"
 
 # External object files for target test_ai
 test_ai_EXTERNAL_OBJECTS =
 
+test_ai: CMakeFiles/test_ai.dir/test_ai_autogen/mocs_compilation.cpp.o
 test_ai: CMakeFiles/test_ai.dir/test_ai.cpp.o
 test_ai: CMakeFiles/test_ai.dir/build.make
 test_ai: lib/libgtest_main.a
 test_ai: libai.a
 test_ai: lib/libgtest.a
 test_ai: CMakeFiles/test_ai.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_ai"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/workspaces/XO_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable test_ai"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_ai.dir/link.txt --verbose=$(VERBOSE)
 	/usr/bin/cmake -D TEST_TARGET=test_ai -D TEST_EXECUTABLE=/workspaces/XO_Project/build/test_ai -D TEST_EXECUTOR= -D TEST_WORKING_DIR=/workspaces/XO_Project/build -D TEST_EXTRA_ARGS= -D TEST_PROPERTIES= -D TEST_PREFIX= -D TEST_SUFFIX= -D NO_PRETTY_TYPES=FALSE -D NO_PRETTY_VALUES=FALSE -D TEST_LIST=test_ai_TESTS -D CTEST_FILE=/workspaces/XO_Project/build/test_ai[1]_tests.cmake -D TEST_DISCOVERY_TIMEOUT=5 -P /usr/share/cmake-3.16/Modules/GoogleTestAddTests.cmake
 

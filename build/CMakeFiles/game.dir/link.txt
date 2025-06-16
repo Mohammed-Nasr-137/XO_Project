@@ -1,2 +1,2 @@
-/usr/bin/ar qc libgame.a  CMakeFiles/game.dir/game_logic.cpp.o
+/usr/bin/ar qc libgame.a  CMakeFiles/game.dir/game_autogen/mocs_compilation.cpp.o CMakeFiles/game.dir/game_logic.cpp.o
 /usr/bin/ranlib libgame.a
