@@ -48,6 +48,4 @@ void Turnpage::on_start_game_clicked()
 
 void Turnpage::on_turn_box_activated(int index)
 {
-
 }
-
