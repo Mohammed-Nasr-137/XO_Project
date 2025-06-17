@@ -49,7 +49,7 @@ bool GameWrapper::MakeHumanMove(int position) {
 
 pair<bool, int> GameWrapper::MakeAIMove() {
     pair<int, int> ai_move = ai_.GetBestMove(
-        game_.get_board(), 
+        game_.get_board(),
         game_.getCurrentPlayer()
     );
     int position = 1 + ai_move.second + 3 * ai_move.first;
@@ -60,9 +60,7 @@ pair<bool, int> GameWrapper::MakeAIMove() {
     return {success, position};
 }
 
-
 void GameWrapper::Undo() {
-    // is called when undo button is clicked
     if (is_single_mode_) {
         game_.undoMove();
         game_.undoMove();
@@ -72,7 +70,6 @@ void GameWrapper::Undo() {
 }
 
 pair<bool, string> GameWrapper::CheckWinner() {
-    // returns pair of (if winner, winner symbol)
     string current_winner_move = (current_user_ == "X") ? "O" : "X";
     string current_winner_user = "";
     bool is_win = game_.checkWin(current_winner_move);
@@ -104,35 +101,25 @@ string GameWrapper::getcurrent_user() {
 bool GameWrapper::SaveGameWithMoves(const string player1, const string player2,
                                     const string winner,
                                     const vector<pair<int, string>>& moves) {
-    // used at the end of each game
     return sys_.saveGameWithMoves(player1, player2, winner, moves);
 }
 
 vector<tuple<int, string, string, string>>
 GameWrapper::GetGameHistory(const string& username) {
-    // given a username it returns a vector of tuples
-    // (game-id, player1, player2, winner(as a username))
-    // used when gamehistory is clicked
     return sys_.getGameHistory(username);
 }
 
 vector<pair<int, string>>
 GameWrapper::LoadGameMovesWithComments(int game_id) {
-    // given an id (linked to the replay button in the list)
-    // returns pair of position and comments
     return sys_.loadGameMovesWithComments(game_id);
 }
 
 tuple<int, int, int> GameWrapper::GetHeadToHeadStats(
     const string& user1, const string& user2) {
-    // given 2 users returns a tuple (wins1, wins2, ties)
-    // used in the start of a multiplayer game
     return sys_.getHeadToHeadStats(user1, user2);
 }
 
 tuple<int, int, int> GameWrapper::GetHumanVsAIStats(
     const string& humanUser) {
-    // given a user returns a tuple (human-wins, ai-wins, ties)
-    // used in the start of a singleplayer game
     return sys_.getHumanVsAIStats(humanUser);
 }
