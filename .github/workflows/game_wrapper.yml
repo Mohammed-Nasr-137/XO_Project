@@ -1,9 +1,9 @@
-name: CI Lint for game_wrapper
+name: CI Lint for game_wrapper.cpp
 
 on:
   push:
     paths:
-      - 'game_wrapper'
+      - 'game_wrapper.cpp'
   workflow_dispatch:
 
 jobs:
@@ -21,4 +21,4 @@ jobs:
 
       - name: Run cpplint (filtered rules to reduce false positives)
         run: |
-          cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_wrapper
+          cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_wrapper.cpp
