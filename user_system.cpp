@@ -1,7 +1,5 @@
-#ifndef USER_SYSTEM_CPP
-#define USER_SYSTEM_CPP
-
 #include "include/user_system.h"
+
 #include <iostream>
 #include <iomanip>
 #include <sstream>
@@ -9,6 +7,9 @@
 #include <tuple>
 #include <string>
 #include <openssl/sha.h>  // for SHA256
+
+#ifndef USER_SYSTEM_CPP
+#define USER_SYSTEM_CPP
 
 UserSystem::UserSystem(const std::string& db_name) {
     if (openDatabase(db_name)) {
@@ -39,8 +40,10 @@ void UserSystem::createTables() {
         "username TEXT UNIQUE NOT NULL,"
         "password_hash TEXT NOT NULL);";
 
-    if (sqlite3_exec(db, user_table_sql, nullptr, nullptr, &errMsg) != SQLITE_OK) {
-        std::cerr << "Error creating 'users' table: " << errMsg << "\n";
+    if (sqlite3_exec(db, user_table_sql, nullptr, nullptr, &errMsg)
+        != SQLITE_OK) {
+        std::cerr << "Error creating 'users' table: "
+                  << errMsg << "\n";
         sqlite3_free(errMsg);
     }
 
@@ -51,8 +54,10 @@ void UserSystem::createTables() {
         "player2 TEXT NOT NULL,"
         "winner TEXT NOT NULL);";
 
-    if (sqlite3_exec(db, history_table_sql, nullptr, nullptr, &errMsg) != SQLITE_OK) {
-        std::cerr << "Error creating 'game_history' table: " << errMsg << "\n";
+    if (sqlite3_exec(db, history_table_sql, nullptr, nullptr, &errMsg)
+        != SQLITE_OK) {
+        std::cerr << "Error creating 'game_history' table: "
+                  << errMsg << "\n";
         sqlite3_free(errMsg);
     }
 
@@ -64,8 +69,10 @@ void UserSystem::createTables() {
         "comment TEXT,"
         "FOREIGN KEY (game_id) REFERENCES game_history(id));";
 
-    if (sqlite3_exec(db, moves_table_sql, nullptr, nullptr, &errMsg) != SQLITE_OK) {
-        std::cerr << "Error creating 'game_moves' table: " << errMsg << "\n";
+    if (sqlite3_exec(db, moves_table_sql, nullptr, nullptr, &errMsg)
+        != SQLITE_OK) {
+        std::cerr << "Error creating 'game_moves' table: "
+                  << errMsg << "\n";
         sqlite3_free(errMsg);
     }
 }
@@ -78,7 +85,8 @@ bool UserSystem::registerUser(const std::string& username,
         "INSERT INTO users (username, password_hash) VALUES (?, ?);";
 
     sqlite3_stmt* stmt;
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) return false;
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr)
+        != SQLITE_OK) return false;
 
     sqlite3_bind_text(stmt, 1, username.c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 2, hash.c_str(), -1, SQLITE_STATIC);
@@ -97,7 +105,8 @@ bool UserSystem::loginUser(const std::string& username,
         "SELECT COUNT(*) FROM users WHERE username = ? AND password_hash = ?;";
 
     sqlite3_stmt* stmt;
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) return false;
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr)
+        != SQLITE_OK) return false;
 
     sqlite3_bind_text(stmt, 1, username.c_str(), -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 2, hash.c_str(), -1, SQLITE_STATIC);
@@ -126,7 +135,8 @@ std::string UserSystem::hashPassword(const std::string& password) {
 bool UserSystem::saveGameWithMoves(const std::string& player1,
                                    const std::string& player2,
                                    const std::string& winner,
-                                   const std::vector<std::pair<int, std::string>>& moves) {
+                                   const std::vector<std::pair<int,
+                                   std::string>>& moves) {
     sqlite3_exec(db, "BEGIN TRANSACTION;", nullptr, nullptr, nullptr);
 
     std::string winner_username;
@@ -142,7 +152,8 @@ bool UserSystem::saveGameWithMoves(const std::string& player1,
         "INSERT INTO game_history (player1, player2, winner) VALUES (?, ?, ?);";
     sqlite3_stmt* stmt_game;
 
-    if (sqlite3_prepare_v2(db, insert_game_sql, -1, &stmt_game, nullptr) != SQLITE_OK) {
+    if (sqlite3_prepare_v2(db, insert_game_sql, -1, &stmt_game, nullptr)
+        != SQLITE_OK) {
         return false;
     }
     sqlite3_bind_text(stmt_game, 1, player1.c_str(), -1, SQLITE_STATIC);
@@ -162,7 +173,8 @@ bool UserSystem::saveGameWithMoves(const std::string& player1,
         "VALUES (?, ?, ?, ?);";
     sqlite3_stmt* stmt_move;
 
-    if (sqlite3_prepare_v2(db, insert_move_sql, -1, &stmt_move, nullptr) != SQLITE_OK) {
+    if (sqlite3_prepare_v2(db, insert_move_sql, -1, &stmt_move, nullptr)
+        != SQLITE_OK) {
         return false;
     }
 
@@ -201,7 +213,8 @@ UserSystem::getGameHistory(const std::string& username) {
     sqlite3_stmt* stmt;
     std::vector<std::tuple<int, std::string, std::string, std::string>> history;
 
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr)
+        != SQLITE_OK) {
         return history;
     }
 
@@ -234,7 +247,8 @@ UserSystem::loadGameMovesWithComments(int game_id) {
     sqlite3_stmt* stmt;
     std::vector<std::pair<int, std::string>> moves;
 
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr)
+        != SQLITE_OK) {
         return moves;
     }
 
@@ -265,7 +279,8 @@ UserSystem::getHeadToHeadStats(const std::string& user1,
     sqlite3_stmt* stmt;
     int user1Wins = 0, user2Wins = 0, ties = 0;
 
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr)
+        != SQLITE_OK) {
         return std::make_tuple(0, 0, 0);
     }
 
@@ -301,7 +316,8 @@ UserSystem::getHumanVsAIStats(const std::string& humanUser) {
     sqlite3_stmt* stmt;
     int humanWins = 0, aiWins = 0, ties = 0;
 
-    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr) != SQLITE_OK) {
+    if (sqlite3_prepare_v2(db, sql, -1, &stmt, nullptr)
+        != SQLITE_OK) {
         return std::make_tuple(0, 0, 0);
     }
 
