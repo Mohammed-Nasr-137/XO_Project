@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "ai.h"
 #include <string>
 #include <vector>
+#include "include/ai.h"
 
 // Helper to create a 3x3 empty board
 Board EmptyBoard() {
@@ -63,7 +63,7 @@ TEST(AITest, GetBestMoveEasyIsRandom) {
     ai.SetDifficulty("easy");
     Board board = EmptyBoard();
     auto move = ai.GetBestMove(board, 'X');
-    EXPECT_EQ(board[move.first][move.second] == ' ');
+    EXPECT_EQ(board[move.first][move.second], ' ');
 }
 
 TEST(AITest, GetBestMoveHardFindsWinningMove) {
@@ -116,10 +116,8 @@ TEST(AITest, MediumDepthPreventsImmediateLossButMayMissFork) {
     };
     auto move = ai.GetBestMove(board, 'X');
     // May capture center or block immediate threat
-    EXPECT_TRUE(
-        (move.first == 0 && move.second == 1) ||
-        (move.first == 2 && move.second == 1)
-    );
+    EXPECT_TRUE((move.first == 0 && move.second == 1) ||
+                (move.first == 2 && move.second == 1));
 }
 
 TEST(AIAuditTest, MultipleMovesLogging) {
@@ -140,7 +138,7 @@ TEST(AITest, GenerateExplanationBlocksWinningMove) {
         {'X', ' ', ' '},
         {' ', 'X', ' '}};
     Board after = before;
-    after[0][2] = 'X'; // Blocking O's win
+    after[0][2] = 'X';  // Blocking O's win
     std::string explanation = ai.GenerateExplanation(before, after, 'X', 'O');
     EXPECT_NE(explanation.find("Blocked opponent"), std::string::npos);
 }
@@ -154,4 +152,3 @@ TEST(AITest, EasyModeRandomMovesDiffer) {
     // There's a chance moves differ due to randomness
     EXPECT_FALSE(move1.first == move2.first && move1.second == move2.second);
 }
-
