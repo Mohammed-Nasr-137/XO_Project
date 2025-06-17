@@ -1,7 +1,8 @@
+#include "include/game_wrapper.h"
+
 #include "include/ai.h"
 #include "include/game_logic.h"
 #include "include/user_system.h"
-#include "include/game_wrapper.h"
 
 #include <string>
 #include <utility>
@@ -16,22 +17,16 @@ using std::vector;
 GameWrapper::GameWrapper() : sys_("game_db") {}
 
 bool GameWrapper::Login_Wrapper(const string& username, const string& password) {
-    // is called when login button is clicked
     return sys_.loginUser(username, password);
 }
 
 bool GameWrapper::Register_Wrapper(const string& username, const string& password) {
-    // is called when register button is clicked
     return sys_.registerUser(username, password);
 }
 
 void GameWrapper::StartNewGame(const string& p1, const string& p2,
                                bool is_single_mode, const string& ai_level,
                                const string& chosen_symbol) {
-    // is called at the start of a new game whether it's single or multi
-    // (after signing in the 2nd user) or in case of reset button is clicked
-    // called after a move is chosen
-    // controls which player starts
     player1_ = p1;
     player2_ = p2;
     is_single_mode_ = is_single_mode;
@@ -45,7 +40,6 @@ void GameWrapper::StartNewGame(const string& p1, const string& p2,
 }
 
 bool GameWrapper::MakeHumanMove(int position) {
-    // used by every human player
     bool success = game_.makeMove(position, "Human move");
     if (success) {
         current_user_ = (current_user_ == "X") ? "O" : "X";
@@ -54,9 +48,10 @@ bool GameWrapper::MakeHumanMove(int position) {
 }
 
 pair<bool, int> GameWrapper::MakeAIMove() {
-    // used by ai if single mode
     pair<int, int> ai_move = ai_.GetBestMove(
-        game_.get_board(), game_.getCurrentPlayer());
+        game_.get_board(), 
+        game_.getCurrentPlayer()
+    );
     int position = 1 + ai_move.second + 3 * ai_move.first;
     bool success = game_.makeMove(position, comment_);
     if (success) {
@@ -64,6 +59,7 @@ pair<bool, int> GameWrapper::MakeAIMove() {
     }
     return {success, position};
 }
+
 
 void GameWrapper::Undo() {
     // is called when undo button is clicked
