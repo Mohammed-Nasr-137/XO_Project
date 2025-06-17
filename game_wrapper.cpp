@@ -1,13 +1,13 @@
 #include "include/game_wrapper.h"
 
-#include "include/ai.h"
-#include "include/game_logic.h"
-#include "include/user_system.h"
-
 #include <string>
 #include <utility>
 #include <tuple>
 #include <vector>
+
+#include "include/ai.h"
+#include "include/game_logic.h"
+#include "include/user_system.h"
 
 using std::pair;
 using std::string;
@@ -50,8 +50,7 @@ bool GameWrapper::MakeHumanMove(int position) {
 pair<bool, int> GameWrapper::MakeAIMove() {
     pair<int, int> ai_move = ai_.GetBestMove(
         game_.get_board(),
-        game_.getCurrentPlayer()
-    );
+        game_.getCurrentPlayer());
     int position = 1 + ai_move.second + 3 * ai_move.first;
     bool success = game_.makeMove(position, comment_);
     if (success) {
