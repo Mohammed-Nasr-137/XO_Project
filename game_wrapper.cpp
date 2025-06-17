@@ -2,6 +2,7 @@
 #include "include/game_logic.h"
 #include "include/user_system.h"
 #include "include/game_wrapper.h"
+
 #include <string>
 #include <utility>
 #include <tuple>
@@ -54,8 +55,8 @@ bool GameWrapper::MakeHumanMove(int position) {
 
 pair<bool, int> GameWrapper::MakeAIMove() {
     // used by ai if single mode
-    pair<int, int> ai_move = ai_.GetBestMove(game_.get_board(),
-                                             game_.getCurrentPlayer());
+    pair<int, int> ai_move = ai_.GetBestMove(
+        game_.get_board(), game_.getCurrentPlayer());
     int position = 1 + ai_move.second + 3 * ai_move.first;
     bool success = game_.makeMove(position, comment_);
     if (success) {
@@ -83,7 +84,7 @@ pair<bool, string> GameWrapper::CheckWinner() {
     /*if (is_win)
         {
             current_winner_user = (current_winner_move == player1_symbol_) ?
-                player1_ : player2_; // determine which user has won
+                player1_ : player2_;  // determine which user has won
         }*/
     return p;
 }
@@ -126,14 +127,15 @@ GameWrapper::LoadGameMovesWithComments(int game_id) {
     return sys_.loadGameMovesWithComments(game_id);
 }
 
-tuple<int, int, int> GameWrapper::GetHeadToHeadStats(const string& user1,
-                                                     const string& user2) {
+tuple<int, int, int> GameWrapper::GetHeadToHeadStats(
+    const string& user1, const string& user2) {
     // given 2 users returns a tuple (wins1, wins2, ties)
     // used in the start of a multiplayer game
     return sys_.getHeadToHeadStats(user1, user2);
 }
 
-tuple<int, int, int> GameWrapper::GetHumanVsAIStats(const string& humanUser) {
+tuple<int, int, int> GameWrapper::GetHumanVsAIStats(
+    const string& humanUser) {
     // given a user returns a tuple (human-wins, ai-wins, ties)
     // used in the start of a singleplayer game
     return sys_.getHumanVsAIStats(humanUser);
