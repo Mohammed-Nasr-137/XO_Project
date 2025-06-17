@@ -1,5 +1,8 @@
 #include "game_logic.h"
 #include <iostream>
+#include <string>
+#include <utility>
+#include <vector>
 
 // --- Private Methods ---
 
@@ -21,7 +24,8 @@ Board GameEngine::get_board() const {
     return board;
 }
 
-const std::vector<std::pair<Move, std::string>>& GameEngine::get_moveHistory() const {
+const std::vector<std::pair<Move, std::string>>&
+GameEngine::get_moveHistory() const {
     return moveHistory;
 }
 
@@ -69,17 +73,20 @@ bool GameEngine::undoMove() {
 
 bool GameEngine::checkWin(std::string player) {
     int val = (player == "X") ? 1 : -1;
-    // std::cout << player << " " << val << "\n";
     // Check rows and columns
     for (int i = 0; i < 3; ++i) {
-        if ((playerValue(board[i][0]) + playerValue(board[i][1]) + playerValue(board[i][2]) == 3 * val) ||
-            (playerValue(board[0][i]) + playerValue(board[1][i]) + playerValue(board[2][i]) == 3 * val)) {
+        if ((playerValue(board[i][0]) + playerValue(board[i][1]) +
+             playerValue(board[i][2]) == 3 * val) ||
+            (playerValue(board[0][i]) + playerValue(board[1][i]) +
+             playerValue(board[2][i]) == 3 * val)) {
             return true;
         }
     }
     // Check diagonals
-    if ((playerValue(board[0][0]) + playerValue(board[1][1]) + playerValue(board[2][2]) == 3 * val) ||
-        (playerValue(board[0][2]) + playerValue(board[1][1]) + playerValue(board[2][0]) == 3 * val)) {
+    if ((playerValue(board[0][0]) + playerValue(board[1][1]) +
+         playerValue(board[2][2]) == 3 * val) ||
+        (playerValue(board[0][2]) + playerValue(board[1][1]) +
+         playerValue(board[2][0]) == 3 * val)) {
         return true;
     }
     return false;
@@ -98,6 +105,5 @@ bool GameEngine::checkDraw() {
 }
 
 bool GameEngine::isGameOver() {
-    // CORRECT: Calling checkWin with char literals is valid.
     return checkWin("X") || checkWin("O") || checkDraw();
 }
