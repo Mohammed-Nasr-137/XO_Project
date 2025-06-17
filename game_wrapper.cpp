@@ -24,9 +24,12 @@ bool GameWrapper::Register_Wrapper(const string& username, const string& passwor
     return sys_.registerUser(username, password);
 }
 
-void GameWrapper::StartNewGame(const string& p1, const string& p2,
-                               bool is_single_mode, const string& ai_level,
-                               const string& chosen_symbol) {
+void GameWrapper::StartNewGame(
+    const string& p1, 
+    const string& p2,
+    bool is_single_mode, 
+    const string& ai_level,
+    const string& chosen_symbol) {
     player1_ = p1;
     player2_ = p2;
     is_single_mode_ = is_single_mode;
