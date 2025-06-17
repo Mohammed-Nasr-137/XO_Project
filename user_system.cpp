@@ -1,12 +1,12 @@
 #include "include/user_system.h"
 
+#include <openssl/sha.h>  // for SHA256
 #include <iostream>
 #include <iomanip>
 #include <sstream>
 #include <vector>
 #include <tuple>
 #include <string>
-#include <openssl/sha.h>  // for SHA256
 
 #ifndef USER_SYSTEM_CPP
 #define USER_SYSTEM_CPP
