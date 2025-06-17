@@ -21,7 +21,8 @@ bool GameWrapper::Login_Wrapper(const string& username, const string& password)
     return sys_.loginUser(username, password);
 }
 
-bool GameWrapper::Register_Wrapper(const string& username, const string& password)
+bool GameWrapper::Register_Wrapper(const string& username,
+    const string& password)
 {
     return sys_.registerUser(username, password);
 }
