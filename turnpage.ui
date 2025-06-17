@@ -125,7 +125,7 @@ QPushButton:pressed {
 </string>
     </property>
     <property name="text">
-     <string>Back to Main</string>
+     <string>Main Menu</string>
     </property>
    </widget>
    <widget class="QLabel" name="turn_label">

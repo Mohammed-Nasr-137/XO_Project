@@ -225,7 +225,7 @@ QPushButton:pressed {
 </string>
     </property>
     <property name="text">
-     <string>Back to Main</string>
+     <string>Main Menu</string>
     </property>
    </widget>
    <widget class="QComboBox" name="level_ai">

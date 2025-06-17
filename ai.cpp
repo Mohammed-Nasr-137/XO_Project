@@ -1,3 +1,5 @@
+#ifndef AI_CPP
+#define AI_CPP
 #include "ai.h"
 #include <limits>
 #include <cstdlib>
@@ -72,11 +74,11 @@ void AI::LogMinimaxMove(bool is_maximizing, int depth, const std::string& messag
 
 
 int AI::Minimax(Board board, bool is_maximizing, char ai_player, char human_player,
-    int depth, int alpha, int beta, int max_depth) {
+                int depth, int alpha, int beta, int max_depth) {
 
     int score = EvaluateBoard(board, ai_player, human_player);
     if (score == 10 || score == -10) {
-        // LogMinimaxMove(is_maximizing, depth, "Terminal node: Score = " + std::to_string(score - depth)); 
+        // LogMinimaxMove(is_maximizing, depth, "Terminal node: Score = " + std::to_string(score - depth));
         return score - depth;
     }
     if (GetLegalMoves(board).empty()) {
@@ -108,14 +110,14 @@ int AI::Minimax(Board board, bool is_maximizing, char ai_player, char human_play
         }
         // LogMinimaxMove(true, depth, "Best score = " + std::to_string(best));
         return best;
-    } 
+    }
     // Human turn
     else {
         int best = numeric_limits<int>::max();
         for (const auto& move : GetLegalMoves(board)) {
             board[move.first][move.second] = human_player;
             // LogMinimaxMove(false, depth, "Trying move", move);
-            
+
             int val = Minimax(board, true, ai_player, human_player,
                               depth + 1, alpha, beta, max_depth);
 
@@ -205,7 +207,7 @@ pair<int, int> AI::GetBestMove(const Board& board, char ai_player) {
     temp[best_move.first][best_move.second] = ai_player;
     string explanation = GenerateExplanation(board, temp, ai_player, human_player);
     audit_.LogMove(best_move.first, best_move.second, best_score, max_depth,
-                  explanation, move_number);
+                   explanation, move_number);
     return best_move;
 }
 
@@ -243,3 +245,5 @@ string AIAudit::ExportLogAsJSON() const {
 void AIAudit::Reset() {
     log_.clear();
 }
+
+#endif // GAME_WRAPPER_CPP

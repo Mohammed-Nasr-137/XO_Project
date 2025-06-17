@@ -5,6 +5,8 @@
 #include "mainwindow.h"
 #include"GameData.h"
 #include"aipage.h"
+# include <QDebug>
+#include <QSettings>
 MainScreen::MainScreen(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainScreen)
@@ -25,7 +27,7 @@ void MainScreen::on_Logout_button_clicked()
 }
 void MainScreen::on_playAi_button_clicked()
 {
-     GameData::instance().mode="Ai";
+     GameData::instance().mode="AI";
     this->hide();
     Aipage*aipage= new Aipage();
     aipage->show();

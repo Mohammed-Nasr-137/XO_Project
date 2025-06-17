@@ -26,6 +26,10 @@ private slots:
 
     void on_level_ai_currentIndexChanged(int index);
 
+    void on_start_game_ai_clicked();
+
+    void on_level_ai_activated(int index);
+
 private:
     Ui::Aipage *ui;
 };

@@ -57,15 +57,17 @@ else  {
 }
     void MainWindow::on_login_button_clicked()
     {
-        if (ui->password->text() == "1234" &&( ui->username->text() == "Moussa" ||ui->username->text()=="nasr"))
+        QString username = ui->username->text();
+        QString password = ui->password->text();
+        if (GameData::instance().controller.Login_Wrapper(username.toStdString(), password.toStdString()))
         {
             if(GameData::instance().tracker){
-                GameData::instance().firstPlayer=ui->username->text();
+                GameData::instance().firstPlayer = username;
             }
             else{
-                GameData::instance().secondPlayer=ui->username->text();
+                GameData::instance().secondPlayer = username;
             }
-            if(GameData::instance().secondPlayer==GameData::instance().firstPlayer)
+            if(GameData::instance().secondPlayer == GameData::instance().firstPlayer)
             {
                  QMessageBox::information(this, "Duplicate User", "Enter a different user.");
             }
@@ -80,12 +82,13 @@ else  {
             QGridLayout* layout = (QGridLayout*)msgBox.layout();
             layout->addItem(spacer, layout->rowCount(), 0, 1, layout->columnCount());
             msgBox.exec();
-            if( GameData::instance().tracker){
+            if(GameData::instance().tracker)
+            {
                 GameData::instance().tracker=false;
-            this-> hide();
-            MainScreen *mainscreen= new MainScreen();
-            mainscreen->show();
-    }
+                this-> hide();
+                MainScreen *mainscreen= new MainScreen();
+                mainscreen->show();
+            }
             else {
                 this->hide();
                 Turnpage *turnpage=new Turnpage();

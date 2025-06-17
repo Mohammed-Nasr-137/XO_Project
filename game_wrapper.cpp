@@ -1,177 +1,158 @@
 // #include <iostream>
 #include <vector>
 #include <string>
-// #include "ai.cpp"
-#include "game_logic.cpp"
-#include "user_system.cpp"
+#include "ai.h"
+#include "game_logic.h"
+#include "user_system.h"
+#include "game_wrapper.h"
 
 using namespace std;
 
+    GameWrapper::GameWrapper() : sys_("game_db") {}
 
-class GameWrapper {
-    private:
-        UserSystem  sys_;
-        AI          ai_;
-        GameEngine  game_;
-        bool        is_single_mode_;
-        string      player1_;           // username1
-        string      player2_;           // username2
-        string      player1_symbol_;
-        string      player2_symbol_;
-        string      current_user_;      // used to tell gui whose move this is
-        string      comment_;
-        vector<pair<Move, string>> move_history_;
+    bool GameWrapper::Login_Wrapper(const string& username, const string& password)
+    {   // is called when login button is clicked
+        return sys_.loginUser(username, password);
+    }
 
-        vector<pair<int, string>> GetMoveHistory()
+    bool GameWrapper::Register_Wrapper(const string& username, const string& password)
+    {   // is called when register button is clicked
+        return sys_.registerUser(username, password);
+    }
+
+    void GameWrapper::StartNewGame(const string& p1, const string& p2, bool is_single_mode, const string& ai_level, const string& chosen_symbol)
+    {
+        // is called at the start of a new game whether it's single or multi (after signing in the 2nd user) or in case of reset button is clicked
+        // called after a move is chosen
+        // controls which player starts
+        player1_ = p1;
+        player2_ = p2;
+        is_single_mode_ = is_single_mode;
+        game_.Game_init();
+        player1_symbol_ = chosen_symbol;
+        player2_symbol_ = (chosen_symbol == "X") ? "O" : "X";
+        current_user_ = "X";
+        if (is_single_mode) ai_.SetDifficulty(ai_level);
+    }
+
+    bool GameWrapper::MakeHumanMove(int position)
+    {
+        // used by every human player
+        bool success = game_.makeMove(position, "Human move");
+        if (success)
         {
-            vector<pair<int, string>> moves;
-            for (auto item : game_.get_moveHistory())
-            {
-                moves.push_back({item.first.position, item.second});
-            }
-            return moves;
+            current_user_ = (current_user_ == "X") ? "O" : "X";  // if move is made flip current user
         }
+        return success;
+    }
 
-        void GetComment()
+    pair<bool, int> GameWrapper::MakeAIMove()
+    {
+        // used by ai if single mode
+        pair<int, int> ai_move = ai_.GetBestMove(game_.get_board(), game_.getCurrentPlayer());
+        int position = 1 + ai_move.second + 3 * ai_move.first;
+        bool success = game_.makeMove(position, comment_);
+        if (success)
         {
-            comment_ = ai_.audit_.GetLastExplanation();
+            current_user_ = (current_user_ == "X") ? "O" : "X";  // if move is made flip current user
         }
+        return {success, position};
+    }
 
-    public:
-        GameWrapper() : sys_("game_db") {}
-
-        bool Login_Wrapper(const string& username, const string& password)
-        {   // is called when login button is clicked
-            return sys_.loginUser(username, password);
-        }
-
-        bool Register_Wrapper(const string& username, const string& password)
-        {   // is called when register button is clicked
-            return sys_.registerUser(username, password);
-        }
-
-        void StartNewGame(const string& p1, const string& p2, bool is_single_mode, const string& ai_level, const string& chosen_symbol) 
+    void GameWrapper::Undo()
+    {   // is called when undo button is clicked
+        if (is_single_mode_)
         {
-            // is called at the start of a new game whether it's single or multi (after signing in the 2nd user) or in case of reset button is clicked
-            // called after a move is chosen
-            // controls which player starts
-            player1_ = p1;
-            player2_ = p2;
-            is_single_mode_ = is_single_mode;
-            game_.Game_init();
-            player1_symbol_ = chosen_symbol;
-            player2_symbol_ = (chosen_symbol == "X") ? "O" : "X";
-            current_user_ = (player1_symbol_ == "X") ? player1_ : player2_;
-            if (is_single_mode) ai_.SetDifficulty(ai_level);
+            game_.undoMove();
+            game_.undoMove();
         }
+        else game_.undoMove();
+    }
 
-        bool MakeHumanMove(int position) 
-        {
-            // used by every human player
-            bool success = game_.makeMove(position, "Human move");
-            if (success) 
-            {
-                current_user_ = (current_user_ == "X") ? "O" : "X";  // if move is made flip current user
-            }
-            return success;
-        }
-
-        bool MakeAIMove(int position) 
-        {
-            // used by ai if single mode
-            pair<int, int> ai_move = ai_.GetBestMove(game_.get_board(), game_.getCurrentPlayer());
-            bool success = game_.makeMove(position, comment_);
-            if (success) 
-            {
-                current_user_ = (current_user_ == "X") ? "O" : "X";  // if move is made flip current user
-            }
-            return success; 
-        }
-
-        void Undo()
-        {   // is called when undo button is clicked 
-            if (is_single_mode_)
-            {
-                game_.undoMove();
-                game_.undoMove();
-            }
-            else game_.undoMove();
-        }
-
-        pair<bool, string> CheckWinner()
-        {
-            // returns pair of (if winner, winner symbol)
-            string current_winner_move = (current_user_ == "X") ? "O" : "X";  // checks the opposite move for a win
-            string current_winner_user = "";
-            bool is_win = game_.checkWin(current_winner_move);
-            pair<bool, string> p = {is_win, current_winner_move};
-            /*if (is_win)
+    pair<bool, string> GameWrapper::CheckWinner()
+    {
+        // returns pair of (if winner, winner symbol)
+        string current_winner_move = (current_user_ == "X") ? "O" : "X";  // checks the opposite move for a win
+        string current_winner_user = "";
+        bool is_win = game_.checkWin(current_winner_move);
+        pair<bool, string> p = {is_win, current_winner_move};
+        /*if (is_win)
             {
                 current_winner_user = (current_winner_move == player1_symbol_) ? player1_ : player2_; // determine which user has won
             }*/
-            return p;
-        }
+        return p;
+    }
 
-        bool CheckTie()
-        {
-            return game_.checkDraw();
-        }
+    bool GameWrapper::CheckTie()
+    {
+        return game_.checkDraw();
+    }
 
-        vector<vector<char>> GetBoard()
-        {
-            return game_.get_board();
-        }
+    vector<vector<char>> GameWrapper::GetBoard()
+    {
+        return game_.get_board();
+    }
 
-        bool SaveGameWithMoves( 
-            const string player1, // username1
-            const string player2, // username2
-            const string winner,  // winner symbol
-            const vector<pair<int, string>> moves // pair of position and comment
+    char GameWrapper::getCurrentUserSymbol()
+    {
+        return game_.getCurrentPlayer();
+    }
+
+    string GameWrapper::getcurrent_user()
+    {
+        return current_user_;
+    }
+
+    bool GameWrapper::SaveGameWithMoves(
+        const string player1, // username1
+        const string player2, // username2
+        const string winner,  // winner symbol
+        const vector<pair<int, string>> moves // pair of position and comment
         )
-        {
-            // used at the end of each game
-            return sys_.saveGameWithMoves(player1, player2, winner, moves);
-        }
+    {
+        // used at the end of each game
+        return sys_.saveGameWithMoves(player1, player2, winner, moves);
+    }
 
-        vector<tuple<int, string, string, string>> 
-        GetGameHistory(const string username)
-        {
-            // given a username it returns a vector of tuples (game-id, player1, player2, winner(as a username))
-            // used when gamehistory is clicked
-            return sys_.getGameHistory(username);
-        }
+    vector<tuple<int, string, string, string>>
+    GameWrapper::GetGameHistory(const string& username)
+    {
+        // given a username it returns a vector of tuples (game-id, player1, player2, winner(as a username))
+        // used when gamehistory is clicked
+        return sys_.getGameHistory(username);
+    }
 
-        vector<pair<int, string>>
-        LoadGameMovesWithComments(int game_id)
-        {
-            // given an id (linked to the replay button in the list)
-            // returns pair of position and comments 
-            return sys_.loadGameMovesWithComments(game_id);
-        }
+    vector<pair<int, string>>
+    GameWrapper::LoadGameMovesWithComments(int game_id)
+    {
+        // given an id (linked to the replay button in the list)
+        // returns pair of position and comments
+        return sys_.loadGameMovesWithComments(game_id);
+    }
 
-        tuple<int, int ,int> GetHeadToHeadStats(const string user1, const string user2)
-        {
-            // given 2 users returns a tuple (wins1, wins2, ties)
-            // used in the start of a multiplayer game
-            return sys_.getHeadToHeadStats(user1, user2);
-        }
+    tuple<int, int ,int> GameWrapper::GetHeadToHeadStats(const string& user1, const string& user2)
+    {
+        // given 2 users returns a tuple (wins1, wins2, ties)
+        // used in the start of a multiplayer game
+        return sys_.getHeadToHeadStats(user1, user2);
+    }
 
-        tuple<int, int ,int> GetHumanVsAIStats(const string humanUser)
-        {
-            // given a user returns a tuple (human-wins, ai-wins, ties)
-            // used in the start of a singleplayer game
-            return sys_.getHumanVsAIStats(humanUser);
-        }
-};
-
+    tuple<int, int ,int> GameWrapper::GetHumanVsAIStats(const string& humanUser)
+    {
+        // given a user returns a tuple (human-wins, ai-wins, ties)
+        // used in the start of a singleplayer game
+        return sys_.getHumanVsAIStats(humanUser);
+    }
 
 
-/* 
+
+
+/*
 
 
 // init system and global variables
 string game_winner;
-// string difficulty = "";  // set by gui as "easy", "medium", "hard", and used by wrappers 
+// string difficulty = "";  // set by gui as "easy", "medium", "hard", and used by wrappers
 // UserSystem sys("game_db");
 pair<string, string> cred_pair1, cred_pair2;
 
@@ -203,29 +184,29 @@ void game_flow(bool single, string diff = "")
     static char starter = 'X'; // is flipped when the game ends
 
     // cout << "\nEnter position (1-9), 0 to reset, 10 to undo: \n";
-    
+
     while(!game.isGameOver())
     {
         game.displayBoard();
-        
-        
+
+
         if (game.getCurrentPlayer() == starter)
         {
             // cout << "\nPlayer " << game.getCurrentPlayer() << "'s turn.\nPosition (1-9): \n";
             cin >> user1_position;
         }
         else
-        { 
+        {
             cout << "\nAI Player " << game.getCurrentPlayer() << "'s turn.\nPosition (1-9): \n";
             pair<int, int> ai_move = ai_player.GetBestMove(game.get_board(), game.getCurrentPlayer());
             user1_position = ai_move.first * 3 + ai_move.second +  1;
             cout << "\n" << ai_player.audit_.GetLastExplanation() << "\n";
         }
 
-        
-       
 
-        // Resets the board 
+
+
+        // Resets the board
         if(user1_position == 0)
         {
             game.Game_init();
@@ -233,21 +214,21 @@ void game_flow(bool single, string diff = "")
             continue;
         }
 
-        // undoes the move 
+        // undoes the move
         else if(user1_position == 10)
         {
             game.undoMove();
             game.undoMove();
-            continue; 
+            continue;
         }
-        
 
-        // variable that saves winner before switching turns 
+
+        // variable that saves winner before switching turns
         char current = game.getCurrentPlayer();
 
         game.makeMove(user1_position, ai_player.audit_.GetLastExplanation());
 
-        // Check for win 
+        // Check for win
         if (game.checkWin(current))
         {
             game.displayBoard();
@@ -264,7 +245,7 @@ void game_flow(bool single, string diff = "")
             break;
         }
 
-        // Check for draw 
+        // Check for draw
         if (game.checkDraw())
         {
             game.displayBoard();
@@ -276,7 +257,7 @@ void game_flow(bool single, string diff = "")
     }
     vector<pair<int, string>> moves = get_moves(game.get_moveHistory());
     // sys.saveGameWithMoves(cred_pair.first, "AI", game_winner, moves);   // here moves remains to be added
-    
+
 }
 
 pair<string, string> get_name_and_pass()
@@ -287,7 +268,7 @@ pair<string, string> get_name_and_pass()
     cout << "Enter your pass: ";
     cin >> password;
     return make_pair(name, password);
-} 
+}
 
 
 
@@ -296,8 +277,8 @@ void display_gamemoves(vector<pair<int, string>> logged_moves)
     int move_number = 1;
     for (auto item : logged_moves)
     {
-        cout << "move number: " << move_number << " , pos: " << item.first 
-        << " , comment: " << item.second << "\n"; 
+        cout << "move number: " << move_number << " , pos: " << item.first
+        << " , comment: " << item.second << "\n";
         move_number++;
     }
 }
@@ -306,8 +287,8 @@ void display_history(vector<tuple<int, string, string, string>> logged_moves)
 {
     for (auto item : logged_moves)
     {
-        cout << "game id: " << get<0>(item) << " , player1: " << get<1>(item) 
-        << " , player2: " << get<2>(item) << ", winner: " << get<3>(item) <<"\n"; 
+        cout << "game id: " << get<0>(item) << " , player1: " << get<1>(item)
+        << " , player2: " << get<2>(item) << ", winner: " << get<3>(item) <<"\n";
     }
 }
 
@@ -325,18 +306,18 @@ void single_player(const string difficulty)
 
         // game_flow(true, difficulty);
     } while (rematch);
-    
+
 }
 */
 
 
-/* 
+/*
 int main()
 {
     // init sys
-    
+
     bool success;
-    
+
     do
     {
         int acc;
@@ -344,7 +325,7 @@ int main()
         cin >> acc;
         cred_pair = get_name_and_pass();
         success = false;
-    if (acc == 1) 
+    if (acc == 1)
     {
         success = sys.registerUser(cred_pair.first, cred_pair.second);
         if (!success) cout << "reg failed or user already exits! \n";
@@ -355,17 +336,17 @@ int main()
         if (!success) cout << "login failed! \n";
     }
     } while (!success);
-    
-    
-    
+
+
+
     tuple<int, int, int> stats = sys.getHumanVsAIStats(cred_pair.first);
-    cout << "human: " << get<0>(stats) << ", ai: " << get<1>(stats) << ", ties: " << get<2>(stats) << "\n"; 
-   
+    cout << "human: " << get<0>(stats) << ", ai: " << get<1>(stats) << ", ties: " << get<2>(stats) << "\n";
+
 
     // start game
     game_flow();
-    
-    
+
+
     int choice;
     cout << "what do you want to do? (1:replay, 2:exit)  ";
     cin >> choice;

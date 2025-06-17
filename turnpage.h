@@ -23,6 +23,8 @@ private slots:
 
     void on_turn_box_activated(int index);
 
+    void on_start_game_clicked();
+
 private:
     Ui::Turnpage *ui;
 };

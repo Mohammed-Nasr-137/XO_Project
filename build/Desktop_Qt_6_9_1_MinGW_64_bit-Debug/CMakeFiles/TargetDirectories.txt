@@ -1,0 +1,9 @@
+G:/xo_game_final/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/Tic_Tac_Toe.dir
+G:/xo_game_final/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+G:/xo_game_final/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+G:/xo_game_final/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+G:/xo_game_final/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/install.dir
+G:/xo_game_final/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+G:/xo_game_final/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+G:/xo_game_final/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/Tic_Tac_Toe_autogen_timestamp_deps.dir
+G:/xo_game_final/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/CMakeFiles/Tic_Tac_Toe_autogen.dir

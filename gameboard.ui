@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Gameboard</class>
+ <widget class="QMainWindow" name="Gameboard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>521</width>
+    <height>627</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background: qlineargradient(
+        spread: pad,
+        x1: 0, y1: 0,
+        x2: 1, y2: 1,
+        stop: 0 rgba(0, 34, 133, 180),
+        stop: 1 rgba(255, 255, 255, 80)
+    );
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="Reset_button">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>550</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: none;
+    color: white;
+    background-color: rgba(0, 120, 255, 180); /* أزرق شفاف */
+    font: bold 11pt &quot;Arial&quot;;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 144, 255, 220); /* أزرق أفتح عند المرور */
+    font: bold 12pt &quot;Arial&quot;;
+}
+
+QPushButton:pressed {
+    background-color: rgba(0, 80, 180, 255); /* أزرق داكن عند الضغط */
+    font: bold 12pt &quot;Arial&quot;;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Reset</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="Back_gboard">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>550</y>
+      <width>151</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: none;
+    color: white;
+    background-color: rgba(0, 120, 255, 180); /* أزرق شفاف */
+    font: bold 11pt &quot;Arial&quot;;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 144, 255, 220); /* أزرق أفتح عند المرور */
+    font: bold 12pt &quot;Arial&quot;;
+}
+
+QPushButton:pressed {
+    background-color: rgba(0, 80, 180, 255); /* أزرق داكن عند الضغط */
+    font: bold 12pt &quot;Arial&quot;;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Main Menu</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>0</y>
+      <width>561</width>
+      <height>65</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="p1_label">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    background-color: qlineargradient(
+        x1: 0, y1: 0,
+        x2: 1, y2: 1,
+        stop: 0 rgba(30, 60, 114, 150),  
+        stop: 1 rgba(42, 82, 152, 150)   
+    );
+    color: white;
+    font: bold 14pt &quot;Segoe UI&quot;;
+    padding: 14px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 180); 
+    qproperty-alignment: AlignCenter;
+}
+
+QLabel:hover {
+    background-color: qlineargradient(
+        x1: 1, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 rgba(58, 28, 113, 180),  
+        stop: 1 rgba(215, 109, 119, 180)  
+    );
+    color: #FFEB3B;
+    border: 2px solid #FFEB3B;
+}
+</string>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="another_label">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+    background-color: qlineargradient(
+        x1: 0, y1: 0,
+        x2: 1, y2: 1,
+        stop: 0 rgba(30, 60, 114, 150),   /* Dark Blue with transparency */
+        stop: 1 rgba(42, 82, 152, 150)    /* Medium Blue with transparency */
+    );
+    color: white;
+    font: bold 14pt &quot;Segoe UI&quot;;
+    padding: 14px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 180); /* Semi-transparent white border */
+    qproperty-alignment: AlignCenter;
+}
+
+QLabel:hover {
+    background-color: qlineargradient(
+        x1: 1, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 rgba(58, 28, 113, 180),   /* Dark purple */
+        stop: 1 rgba(215, 109, 119, 180)  /* Pink with transparency */
+    );
+    color: #FFEB3B;
+    border: 2px solid #FFEB3B;
+}
+</string>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="c_1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>80</y>
+      <width>141</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>36</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background: transparent;
+    border: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/Adobe Express - file.png</normaloff>../Downloads/Adobe Express - file.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>150</width>
+      <height>125</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="c_3">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>80</y>
+      <width>141</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/Adobe Express - file.png</normaloff>../Downloads/Adobe Express - file.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>150</width>
+      <height>125</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="c_2">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>80</y>
+      <width>161</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/Adobe Express - file (1).png</normaloff>../Downloads/Adobe Express - file (1).png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>150</width>
+      <height>120</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="c_6">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>230</y>
+      <width>141</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/Adobe Express - file (1).png</normaloff>../Downloads/Adobe Express - file (1).png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>150</width>
+      <height>125</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="c_5">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>230</y>
+      <width>161</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/Adobe Express - file.png</normaloff>../Downloads/Adobe Express - file.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>150</width>
+      <height>120</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="c_4">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>230</y>
+      <width>141</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/Adobe Express - file (1).png</normaloff>../Downloads/Adobe Express - file (1).png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>150</width>
+      <height>125</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="c_9">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>380</y>
+      <width>141</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/Adobe Express - file.png</normaloff>../Downloads/Adobe Express - file.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>150</width>
+      <height>125</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="c_8">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>380</y>
+      <width>161</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/Adobe Express - file.png</normaloff>../Downloads/Adobe Express - file.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>150</width>
+      <height>120</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="c_7">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>380</y>
+      <width>141</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../Downloads/Adobe Express - file (1).png</normaloff>../Downloads/Adobe Express - file (1).png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>150</width>
+      <height>125</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="upper">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>220</y>
+      <width>441</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <fontweight>Thin</fontweight>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    background-color: rgba(255, 255, 255, 0.5); /* Neon white with 30% opacity */
+    border: none;
+    min-width: 0px;
+    min-height: 0px;
+    border-radius: 7px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5); /* Lighter neon glow */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Lower">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>370</y>
+      <width>441</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+    background-color: rgba(255, 255, 255, 0.5); /* Neon white with 30% opacity */
+    border: none;
+    min-width: 0px;
+    min-height: 0px;
+    border-radius: 7px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.5); /* Lighter neon glow */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Right">
+    <property name="geometry">
+     <rect>
+      <x>171</x>
+      <y>79</y>
+      <width>16</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel{
+    background-color: rgba(255, 255, 255, 0.7); /* Neon white with 30% opacity */
+    border: none;
+    min-width: 0px;
+    min-height: 0px;
+    border-radius: 7px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.7); /* Lighter neon glow */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="left">
+    <property name="geometry">
+     <rect>
+      <x>331</x>
+      <y>80</y>
+      <width>16</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel#left {
+    background-color: rgba(255, 255, 255, 0.7); /* Neon white with 30% opacity */
+    border: none;
+    min-width: 0px;
+    min-height: 0px;
+    border-radius: 7px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.7); /* Lighter neon glow */
+}</string>
+    </property>
+    <property name="lineWidth">
+     <number>0</number>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="undo">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>550</y>
+      <width>141</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: none;
+    color: white;
+    background-color: rgba(0, 120, 255, 180); /* أزرق شفاف */
+    font: bold 11pt &quot;Arial&quot;;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 144, 255, 220); /* أزرق أفتح عند المرور */
+    font: bold 12pt &quot;Arial&quot;;
+}
+
+QPushButton:pressed {
+    background-color: rgba(0, 80, 180, 255); /* أزرق داكن عند الضغط */
+    font: bold 12pt &quot;Arial&quot;;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Undo</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>521</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
