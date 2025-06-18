@@ -28,8 +28,8 @@ jobs:
 
       - name: Build user_system.cpp
         run: |
-          mkdir -p build
-          g++ -std=c++17 -Wall -I. -o build/user_system user_system.cpp -lsqlite3
+              mkdir -p build
+              g++ -std=c++17 -Wall -Iinclude -o build/user_system user_system.cpp sqlite3
 
 
 
