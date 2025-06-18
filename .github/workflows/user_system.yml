@@ -4,74 +4,51 @@ on:
   push:
     paths:
       - 'user_system.cpp'
+      - 'test_user_system.cpp'
       - '.github/workflows/user_system.yml'
   workflow_dispatch:
 
 jobs:
-  build-and-lint:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install dependencies (cpplint + build tools)
+      - name: Install all dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-pip build-essential g++ sqlite3 libsqlite3-dev
-          pip install cpplint
-    
-      - name: Install Google Test
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y cmake libgtest-dev
+          sudo apt-get install -y python3-pip build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev libgtest-dev
+          
+          # Build Google Test from source
           cd /usr/src/gtest
           sudo cmake CMakeLists.txt
           sudo make
           sudo cp lib/*.a /usr/lib/
-   
-      - name: Compile test
-        run: g++ -std=c++17 user_system.cpp test_user_system.cpp -lsqlite3 -lcrypto -o test_user_system
+          
+          # Install cpplint
+          pip install cpplint
 
-      - name: Run cpplint
+      - name: Run cpplint on user_system.cpp
         run: cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references user_system.cpp
 
-      - name: Compile user_system.cpp (object file only)
+      - name: Compile user_system.cpp as object (no main)
         run: g++ -std=c++17 -Wall -Wextra -c user_system.cpp -o user_system.o -lsqlite3 -lcrypto
-  
-      - name: Build Google Test
+
+      - name: Compile and run Google Test
         run: |
-          sudo apt-get update
-          sudo apt-get install -y cmake libgtest-dev
-          cd /usr/src/gtest
-          sudo cmake CMakeLists.txt
-          sudo make
-          sudo cp lib/*.a /usr/lib
+          g++ -std=c++17 user_system.cpp test_user_system.cpp \
+            -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_user_system
+          ./test_user_system
 
-      - name: Build user_system.cpp
+      - name: Build user_system binary
         run: |
-              mkdir -p build
-              g++ -std=c++17 -Wall -Iinclude -o build/user_system user_system.cpp sqlite3
+          mkdir -p build
+          g++ -std=c++17 -Wall -Wextra user_system.cpp -lsqlite3 -lcrypto -o build/user_system
 
-
-      - name: Upload binary artifact
+      - name: Upload user_system binary
         uses: actions/upload-artifact@v4
         with:
           name: user_system_binary
           path: build/user_system
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build-and-lint
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Install test dependencies
-        run: sudo apt install -y g++ libsqlite3-dev
-
-      - name: Compile and run tests
-        run: |
-          g++ -std=c++17 -o test_runner user_system.cpp test_user_system.cpp -lsqlite3
-          ./test_runner
