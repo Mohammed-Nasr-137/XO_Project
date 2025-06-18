@@ -1,4 +1,4 @@
-#include "include/game_logic.h"
+#include "game_logic.h"
 #include <iostream>
 #include <string>
 #include <utility>
