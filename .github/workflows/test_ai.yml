@@ -1,24 +1,45 @@
-name: CI Lint for test_ai.cpp
+name: CI for testAi.cpp
 
 on:
   push:
     paths:
-      - 'test_ai.cpp'
+      - 'testAi.cpp'
   workflow_dispatch:
 
 jobs:
-  cpplint-check:
+  lint-and-compile:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install cpplint
+      - name: Install dependencies
         run: |
+          sudo apt update
+          sudo apt install -y g++
           python3 -m pip install --upgrade pip
           pip install cpplint
 
-      - name: Run cpplint (filtered rules to reduce false positives)
+      - name: Run cpplint
         run: |
-          cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references test_ai.cpp
+          cpplint --filter=-whitespace/indent,-whitespace/line_length testAi.cpp
+
+      - name: Check if file has main() before compiling
+        id: check-main
+        run: |
+          if grep -q "main()" testAi.cpp; then
+            echo "main_found=true" >> $GITHUB_ENV
+          else
+            echo "main_found=false" >> $GITHUB_ENV
+          fi
+
+      - name: Compile testAi.cpp (only if main() exists)
+        if: env.main_found == 'true'
+        run: |
+          g++ -std=c++17 -o test_runner testAi.cpp
+          echo "Compiled successfully."
+
+      - name: Skip compile (no main function)
+        if: env.main_found == 'false'
+        run: echo "Skipping compilation — no main() found in testAi.cpp."
