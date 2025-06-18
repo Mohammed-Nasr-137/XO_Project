@@ -36,7 +36,12 @@ jobs:
       - name: Compile user_system.cpp (object file only)
         run: g++ -std=c++17 -Wall -Wextra -c user_system.cpp -o user_system.o -lsqlite3 -lcrypto
 
-        
+      - name: Compile and run Google Test
+        run: |
+            g++ -std=c++17 user_system.cpp test_user_system.cpp \
+            -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_user_system
+            ./test_user_system
+
       - name: Compile test
         run: g++ -std=c++17 user_system.cpp test_user_system.cpp -lsqlite3 -lcrypto -o test_user_system
 
