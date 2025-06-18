@@ -24,8 +24,9 @@ jobs:
       - name: Run cpplint
         run: cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references user_system.cpp
 
-      - name: Compile user_system.cpp
-        run: g++ -std=c++17 -Wall -Wextra user_system.cpp -lsqlite3 -o user_system
+      - name: Compile user_system.cpp (object file only)
+        run: g++ -std=c++17 -Wall -Wextra -c user_system.cpp -o user_system.o -lsqlite3 -lcrypto
+
         
       - name: Compile test
         run: g++ -std=c++17 user_system.cpp user_system_test.cpp -lsqlite3 -lcrypto -o user_system_test
