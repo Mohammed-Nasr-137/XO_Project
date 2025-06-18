@@ -26,6 +26,7 @@ jobs:
           sudo cmake CMakeLists.txt
           sudo make
           sudo cp lib/*.a /usr/lib/
+          pip install cpplint
           
           # Install cpplint
           pip install cpplint
