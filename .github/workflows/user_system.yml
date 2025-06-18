@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'user_system.cpp'
+      - 'test_user_system.cpp'
       - '.github/workflows/ci_user_system.yml'
   workflow_dispatch:
 
@@ -24,7 +25,7 @@ jobs:
 
       - name: Run cpplint (filtered rules)
         run: |
-          cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references user_system.cpp
+          cpplint --filter=-whitespace/indent,-whitespace/line_length,-runtime/references user_system.cpp
 
       - name: Build user_system.cpp
         run: |
@@ -37,7 +38,6 @@ jobs:
           name: user_system_binary
           path: build/user_system
 
-  # Optional: if you have a test file like user_system_test.cpp
   test:
     runs-on: ubuntu-latest
     needs: build-and-lint
@@ -46,10 +46,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install test dependencies
-        run: sudo apt install -y g++ libsqlite3-dev
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y g++ cmake make libsqlite3-dev
+
+      - name: Clone and build GoogleTest
+        run: |
+          git clone https://github.com/google/googletest.git
+          cmake -S googletest -B build_gtest
+          cmake --build build_gtest
 
       - name: Compile and run tests
         run: |
-          g++ -std=c++17 -o test_runner user_system.cpp test_user_system.cpp -lsqlite3
+          g++ -std=c++17 test_user_system.cpp user_system.cpp \
+              -Igoogletest/googletest/include \
+              build_gtest/lib/libgtest.a build_gtest/lib/libgtest_main.a \
+              -lsqlite3 -pthread -o test_runner
           ./test_runner
