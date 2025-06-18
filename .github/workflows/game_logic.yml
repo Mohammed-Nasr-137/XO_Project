@@ -36,16 +36,16 @@ jobs:
         run: g++ -std=c++17 -Wall -Wextra -c game_logic.cpp -o build/game_logic.o
 
 
-      - name: Compile and run Google Test
+      - name: Compile game_logic.cpp to object file
+        run: |
+          mkdir -p build
+          g++ -std=c++17 -Wall -Wextra -c game_logic.cpp -o build/game_logic.o
+
+      - name: Compile and run tests
         run: |
           g++ -std=c++17 game_logic.cpp test_game_logic.cpp \
             -lgtest -lgtest_main -lpthread -o test_game_logic
           ./test_game_logic
-
-      - name: Compile game_logic to binary
-        run: |
-          mkdir -p build
-          g++ -std=c++17 -Wall -Wextra -o build/game_logic game_logic.cpp
 
       - name: Upload game_logic binary
         uses: actions/upload-artifact@v4
