@@ -1,0 +1,24 @@
+name: CI Lint for mainscreen.cpp
+
+on:
+  push:
+    paths:
+      - 'mainscreen.cpp'
+  workflow_dispatch:
+
+jobs:
+  cpplint-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install cpplint
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install cpplint
+
+      - name: Run cpplint (filtered rules to reduce false positives)
+        run: |
+          cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references mainscreen.cpp
