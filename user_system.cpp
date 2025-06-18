@@ -6,6 +6,7 @@
 #include <tuple>
 #include <string>
 #include "user_system.h"
+#include "gtest/gtest.h"
 
 
 UserSystem::UserSystem(const std::string& db_name)
