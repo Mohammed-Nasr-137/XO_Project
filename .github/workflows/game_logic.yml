@@ -1,24 +1,52 @@
-name: CI Lint for game_logic.cpp
+name: CI for game_logic.cpp
 
 on:
   push:
     paths:
       - 'game_logic.cpp'
+      - 'test_game_logic.cpp'
+      - '.github/workflows/game_logic.yml'
   workflow_dispatch:
 
 jobs:
-  cpplint-check:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install cpplint
+      - name: Install all dependencies
         run: |
-          python3 -m pip install --upgrade pip
+          sudo apt-get update
+          sudo apt-get install -y python3-pip build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev libgtest-dev
           pip install cpplint
+          
+          # Build Google Test from source
+          cd /usr/src/gtest
+          sudo cmake CMakeLists.txt
+          sudo make
+          sudo cp lib/*.a /usr/lib/
 
-      - name: Run cpplint (filtered rules to reduce false positives)
+      - name: Run cpplint on game_logic.cpp
+        run: cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_logic.cpp
+
+      - name: Compile game_logic.cpp as object (no main)
+        run: g++ -std=c++17 -Wall -Wextra -c game_logic.cpp -o game_logic.o
+
+      - name: Compile and run Google Test
         run: |
-          cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_logic.cpp
+          g++ -std=c++17 game_logic.cpp test_game_logic.cpp \
+            -lgtest -lgtest_main -lpthread -o test_game_logic
+          ./test_game_logic
+
+      - name: Compile game_logic to binary
+        run: |
+          mkdir -p build
+          g++ -std=c++17 -Wall -Wextra -o build/game_logic game_logic.cpp
+
+      - name: Upload game_logic binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: game_logic_binary
+          path: build/game_logic
