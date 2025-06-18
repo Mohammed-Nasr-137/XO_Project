@@ -1,9 +1,9 @@
 #include "include/gameboard.h"
-#include "include/ui_gameboard.h"
 
 #include <QApplication>
 #include <utility>
 
+#include "include/ui_gameboard.h"
 #include "include/mainscreen.h"
 #include "include/GameData.h"
 
@@ -13,7 +13,8 @@ Gameboard::Gameboard(QWidget *parent)
     ui->setupUi(this);
     // display head to head stats
     if (GameData::instance().mode == "AI") {
-        ui->p1_label->setText("Your Turn (" + GameData::instance().P1turn + ")");
+        ui->p1_label->setText(
+            "Your Turn (" + GameData::instance().P1turn + ")");
         ui->another_label->setText(
             "AI Turn (" + GameData::instance().Anotherturn + ") | " +
             GameData::instance().level + "");
@@ -84,7 +85,8 @@ void Gameboard::update_gui(QPushButton* c, int pos) {
     GameData::instance().is_tie =
         GameData::instance().controller.CheckTie();
     GameData::instance().is_over =
-        (GameData::instance().win_result.first || GameData::instance().is_tie);
+        (GameData::instance().win_result.first ||
+         GameData::instance().is_tie);
 
     qDebug() << GameData::instance().win_result.first
              << GameData::instance().win_result.second
@@ -96,11 +98,15 @@ void Gameboard::make_human_play(QPushButton* c, int pos) {
     if (GameData::instance().is_over) return;
     qDebug() << "make_human_play is called";
     GameData::instance().is_ai_turn = !GameData::instance().is_ai_turn;
-    qDebug() << "Before: " << GameData::instance().controller.getCurrentUserSymbol()
-             << ", wrapper: " << GameData::instance().controller.getcurrent_user();
+    qDebug() << "Before: "
+             << GameData::instance().controller.getCurrentUserSymbol()
+             << ", wrapper: "
+             << GameData::instance().controller.getcurrent_user();
     bool success = GameData::instance().controller.MakeHumanMove(pos);
-    qDebug() << "After: " << GameData::instance().controller.getCurrentUserSymbol()
-             << ", wrapper: " << GameData::instance().controller.getcurrent_user();
+    qDebug() << "After: "
+             << GameData::instance().controller.getCurrentUserSymbol()
+             << ", wrapper: "
+             << GameData::instance().controller.getcurrent_user();
     if (success) {
         Gameboard::update_gui(c, pos);
         if (!GameData::instance().is_over) {
