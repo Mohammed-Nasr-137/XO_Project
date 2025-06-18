@@ -17,15 +17,16 @@ jobs:
 
       - name: Install dependencies (cpplint + build tools)
         run: |
-          sudo apt update
-          sudo apt install -y g++ cmake make libsqlite3-dev
-          python3 -m pip install --upgrade pip
+          sudo apt-get update
+          sudo apt-get install -y python3-pip build-essential g++ sqlite3 libsqlite3-dev
           pip install cpplint
 
       - name: Run cpplint
         run: cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references user_system.cpp
 
-
+      - name: Compile user_system.cpp
+        run: g++ -std=c++17 -Wall -Wextra user_system.cpp -lsqlite3 -o user_system
+        
       - name: Build user_system.cpp
         run: |
               mkdir -p build
