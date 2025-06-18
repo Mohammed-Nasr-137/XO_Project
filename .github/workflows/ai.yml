@@ -1,24 +1,52 @@
-name: CI Lint for ai.cpp
+name: CI for ai.cpp
 
 on:
   push:
     paths:
       - 'ai.cpp'
+      - 'ai.h'
+      - 'test_ai.cpp'
+      - '.github/workflows/ai.yml'
   workflow_dispatch:
 
 jobs:
-  cpplint-check:
+  lint-and-test:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install cpplint
+      - name: Install dependencies
         run: |
-          python3 -m pip install --upgrade pip
+          sudo apt-get update
+          sudo apt-get install -y python3-pip build-essential g++ cmake \
+            libgtest-dev libssl-dev sqlite3 libsqlite3-dev
           pip install cpplint
 
-      - name: Run cpplint (filtered rules to reduce false positives)
+          # Build Google Test
+          cd /usr/src/gtest
+          sudo cmake CMakeLists.txt
+          sudo make
+          sudo cp lib/*.a /usr/lib/
+
+      - name: Run cpplint on ai.cpp
         run: |
-          cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references ai.cpp
+          cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references ai.cpp
+
+      - name: Compile and run Google Test for AI
+        run: |
+          g++ -std=c++17 ai.cpp test_ai.cpp \
+            -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_ai
+          ./test_ai
+
+      - name: Compile ai.cpp to object file
+        run: |
+          mkdir -p build
+          g++ -std=c++17 -Wall -Wextra -c ai.cpp -o build/ai.o
+
+      - name: Upload compiled ai.o file
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai_object_file
+          path: build/ai.o
