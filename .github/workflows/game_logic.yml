@@ -32,8 +32,9 @@ jobs:
         run: cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_logic.cpp
 
 
-      - name: Compile game_logic.cpp as object (no main)
-        run: g++ -std=c++17 -Wall -Wextra -c game_logic.cpp -o game_logic.o
+      - name: Compile game_logic.cpp to object file
+        run: g++ -std=c++17 -Wall -Wextra -c game_logic.cpp -o build/game_logic.o
+
 
       - name: Compile and run Google Test
         run: |
