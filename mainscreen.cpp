@@ -1,12 +1,11 @@
 #include "include/mainscreen.h"
-#include "include/ui_mainscreen.h"
-
 #include <QDebug>
 #include <QSettings>
-
+#include "include/ui_mainscreen.h"
 #include "include/mainwindow.h"
 #include "include/GameData.h"
 #include "include/aipage.h"
+
 
 MainScreen::MainScreen(QWidget *parent)
     : QMainWindow(parent),
