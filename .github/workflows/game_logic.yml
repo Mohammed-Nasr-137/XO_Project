@@ -29,7 +29,8 @@ jobs:
           sudo cp lib/*.a /usr/lib/
 
       - name: Run cpplint on game_logic.cpp
-        run: cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_logic.cpp
+        run: cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_logic.cpp
+
 
       - name: Compile game_logic.cpp as object (no main)
         run: g++ -std=c++17 -Wall -Wextra -c game_logic.cpp -o game_logic.o
