@@ -19,7 +19,7 @@ Signup::~Signup() {
 }
 
 void Signup::on_reg_button_clicked() {
-    bool check = true;    
+    bool check = true;
     QString username = ui->username_r->text();
     QString password = ui->password_r->text();
     if (username.isEmpty()) {
