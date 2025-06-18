@@ -189,7 +189,8 @@ pair<int, int> AI::GetBestMove(const Board& board, char ai_player) {
     }
     Board temp = board;
     temp[best_move.first][best_move.second] = ai_player;
-    string explanation = GenerateExplanation(board, temp, ai_player, human_player);
+    string explanation = GenerateExplanation(board, temp, ai_player,
+                                             human_player);
     audit_.LogMove(best_move.first, best_move.second, best_score, max_depth,
                    explanation, move_number);
     return best_move;
@@ -218,9 +219,12 @@ string AIAudit::ExportLogAsJSON() const {
         json += "    \"col\": " + to_string(move.col) + ",\n";
         json += "    \"score\": " + to_string(move.score) + ",\n";
         json += "    \"depth\": " + to_string(move.depth) + ",\n";
-        json += "    \"explanation\": \"" + move.explanation + "\"\n";
+        json += "    \"explanation\": \"" + move.explanation +
+                "\"\n";
         json += "  }";
-        if (i != log_.size() - 1) json += ",";
+        if (i != log_.size() - 1) {
+            json += ",";
+        }
         json += "\n";
     }
     json += "]";
