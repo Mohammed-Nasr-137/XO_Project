@@ -41,8 +41,8 @@ void MainWindow::on_exitgame_button_clicked() {
             msgBox.setWindowTitle(" Tic Tac Toe");
             msgBox.setTextFormat(Qt::RichText);
             msgBox.setText(
-                "<div style='font-size:18pt; font-weight:bold;'>🎉 Enjoy playing "
-                "the game 😄🔥</div>");
+            "<div style='font-size:18pt; font-weight:bold;'>🎉 Enjoy playing"
+            "the game 😄🔥</div>");
             msgBox.setIcon(QMessageBox::NoIcon);
             QSpacerItem *spacer = new QSpacerItem(
                 400, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
@@ -104,8 +104,8 @@ void MainWindow::on_login_button_clicked() {
         QMessageBox msgBox;
         msgBox.setWindowTitle("Login Failed");
         msgBox.setText(
-            "<div style='font-size:16pt; font-weight:bold;'>❌ Invalid username "
-            "or password</div>");
+        "<div style='font-size:16pt; font-weight:bold;'>❌ Invalid username "
+        "or password</div>");
         msgBox.setIcon(QMessageBox::NoIcon);
         QSpacerItem* spacer = new QSpacerItem(
             400, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
