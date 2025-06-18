@@ -29,7 +29,7 @@ jobs:
       - name: Build user_system.cpp
         run: |
           mkdir -p build
-          g++ -std=c++17 -Wall -o build/user_system user_system.cpp -lsqlite3
+          g++ -std=c++17 -Wall -o build/user_system user_system.h user_system.cpp -lsqlite3
 
       - name: Upload binary artifact
         uses: actions/upload-artifact@v4
