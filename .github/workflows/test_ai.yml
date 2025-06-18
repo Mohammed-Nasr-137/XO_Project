@@ -1,13 +1,14 @@
-name: CI for testAi.cpp
+name: Google Test CI for testAi.cpp
 
 on:
   push:
     paths:
       - 'testAi.cpp'
+      - '.github/workflows/ci_testAi.yml'
   workflow_dispatch:
 
 jobs:
-  lint-and-compile:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,29 +18,20 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y g++
-          python3 -m pip install --upgrade pip
-          pip install cpplint
+          sudo apt install -y g++ cmake libsqlite3-dev
 
-      - name: Run cpplint
+      - name: Clone and build GoogleTest
         run: |
-          cpplint --filter=-whitespace/indent,-whitespace/line_length testAi.cpp
+          git clone https://github.com/google/googletest.git
+          cmake -S googletest -B build_gtest
+          cmake --build build_gtest
 
-      - name: Check if file has main() before compiling
-        id: check-main
+      - name: Build testAi.cpp with GoogleTest
         run: |
-          if grep -q "main()" testAi.cpp; then
-            echo "main_found=true" >> $GITHUB_ENV
-          else
-            echo "main_found=false" >> $GITHUB_ENV
-          fi
+          g++ -std=c++17 testAi.cpp -Igoogletest/googletest/include \
+              -Igoogletest/googlemock/include \
+              build_gtest/lib/libgtest.a build_gtest/lib/libgtest_main.a \
+              -pthread -o test_runner
 
-      - name: Compile testAi.cpp (only if main() exists)
-        if: env.main_found == 'true'
-        run: |
-          g++ -std=c++17 -o test_runner testAi.cpp
-          echo "Compiled successfully."
-
-      - name: Skip compile (no main function)
-        if: env.main_found == 'false'
-        run: echo "Skipping compilation — no main() found in testAi.cpp."
+      - name: Run unit tests
+        run: ./test_runner
