@@ -22,12 +22,13 @@ jobs:
           pip install cpplint
       - name: Install Google Test
         run: |
-           sudo apt-get update
-           sudo apt-get install -y libgtest-dev
-           cd /usr/src/gtest
-           sudo cmake .
-           sudo make
-           sudo cp *.a /usr/lib
+          sudo apt-get update
+          sudo apt-get install -y cmake libgtest-dev
+          cd /usr/src/gtest
+          sudo cmake CMakeLists.txt
+          sudo make
+          sudo cp lib/*.a /usr/lib/
+
 
       - name: Run cpplint
         run: cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references user_system.cpp
