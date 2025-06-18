@@ -1,4 +1,4 @@
-#include "include/user_system.h"
+#include "user_system.h"
 
 #include <openssl/sha.h>  // for SHA256
 #include <iostream>
@@ -7,9 +7,6 @@
 #include <vector>
 #include <tuple>
 #include <string>
-
-#ifndef USER_SYSTEM_CPP
-#define USER_SYSTEM_CPP
 
 UserSystem::UserSystem(const std::string& db_name) {
     if (openDatabase(db_name)) {
@@ -338,5 +335,3 @@ UserSystem::getHumanVsAIStats(const std::string& humanUser) {
     sqlite3_finalize(stmt);
     return std::make_tuple(humanWins, aiWins, ties);
 }
-
-#endif  // USER_SYSTEM_CPP
