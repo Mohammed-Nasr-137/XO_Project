@@ -21,8 +21,6 @@ protected:
         delete userSystem;
         std::remove(test_db.c_str());
     }
-public:
-    ~Test();
 };
 
 // ============================================================================
