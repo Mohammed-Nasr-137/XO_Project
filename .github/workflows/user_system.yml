@@ -43,10 +43,10 @@ jobs:
             -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_user_system
           ./test_user_system
 
-      - name: Build user_system binary
-        run: |
-          mkdir -p build
-          g++ -std=c++17 -Wall -Wextra user_system.cpp -lsqlite3 -lcrypto -o build/user_system
+
+      - name: Compile user_system.cpp to object file (no main)
+        run: g++ -std=c++17 -Wall -Wextra -c user_system.cpp -o build/user_system.o
+
 
       - name: Upload user_system binary
         uses: actions/upload-artifact@v4
