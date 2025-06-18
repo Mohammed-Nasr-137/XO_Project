@@ -1,4 +1,4 @@
-#include "include/ai.h"
+#include "ai.h"
 
 #include <limits>
 #include <cstdlib>
