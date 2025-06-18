@@ -3,11 +3,11 @@
 
 #include <QDebug>
 #include <QSettings>
+#include <string>
 
 #include "include/mainscreen.h"
 #include "include/GameData.h"
 #include "include/gameboard.h"
-#include <string>
 
 Aipage::Aipage(QWidget *parent)
     : QMainWindow(parent),
