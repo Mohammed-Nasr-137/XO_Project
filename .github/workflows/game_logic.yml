@@ -9,43 +9,67 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build-lint:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install all dependencies
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-pip build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev libgtest-dev
+          sudo apt-get install -y python3-pip build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev
           pip install cpplint
-          
-          # Build Google Test from source
-          cd /usr/src/gtest
-          sudo cmake CMakeLists.txt
-          sudo make
-          sudo cp lib/*.a /usr/lib/
 
       - name: Run cpplint on game_logic.cpp
         run: cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_logic.cpp
-
-
-      - name: Compile game_logic.cpp to object file
-        run: g++ -std=c++17 -Wall -Wextra -c game_logic.cpp -o build/game_logic.o
-
 
       - name: Compile game_logic.cpp to object file
         run: |
           mkdir -p build
           g++ -std=c++17 -Wall -Wextra -c game_logic.cpp -o build/game_logic.o
 
+      - name: Upload compiled object
+        uses: actions/upload-artifact@v4
+        with:
+          name: game_logic_object
+          path: build/game_logic.o
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build-lint
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies and Google Test
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev libgtest-dev
+
+          # Build Google Test
+          cd /usr/src/gtest
+          sudo cmake .
+          sudo make
+          sudo cp lib/*.a /usr/lib/
+
       - name: Compile and run tests
         run: |
           g++ -std=c++17 game_logic.cpp test_game_logic.cpp \
             -lgtest -lgtest_main -lpthread -o test_game_logic
           ./test_game_logic
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Download compiled object
+        uses: actions/download-artifact@v4
+        with:
+          name: game_logic_object
 
       - name: Upload game_logic binary
         uses: actions/upload-artifact@v4
