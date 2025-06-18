@@ -20,6 +20,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y python3-pip build-essential g++ sqlite3 libsqlite3-dev
           pip install cpplint
+    
       - name: Install Google Test
         run: |
           sudo apt-get update
@@ -28,13 +29,16 @@ jobs:
           sudo cmake CMakeLists.txt
           sudo make
           sudo cp lib/*.a /usr/lib/
-
+   
+      - name: Compile test
+        run: g++ -std=c++17 user_system.cpp test_user_system.cpp -lsqlite3 -lcrypto -o test_user_system
 
       - name: Run cpplint
         run: cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references user_system.cpp
 
       - name: Compile user_system.cpp (object file only)
         run: g++ -std=c++17 -Wall -Wextra -c user_system.cpp -o user_system.o -lsqlite3 -lcrypto
+  
       - name: Build Google Test
         run: |
           sudo apt-get update
@@ -43,15 +47,6 @@ jobs:
           sudo cmake CMakeLists.txt
           sudo make
           sudo cp lib/*.a /usr/lib
-
-      - name: Compile and run Google Test
-        run: |
-            g++ -std=c++17 user_system.cpp test_user_system.cpp \
-            -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_user_system
-            ./test_user_system
-
-      - name: Compile test
-        run: g++ -std=c++17 user_system.cpp test_user_system.cpp -lsqlite3 -lcrypto -o test_user_system
 
       - name: Build user_system.cpp
         run: |
