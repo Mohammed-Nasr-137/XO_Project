@@ -9,47 +9,70 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build-lint:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install all dependencies
+      - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-pip build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev libgtest-dev
-          
-          # Build Google Test from source
-          cd /usr/src/gtest
-          sudo cmake CMakeLists.txt
-          sudo make
-          sudo cp lib/*.a /usr/lib/
-          pip install cpplint
-          
-          # Install cpplint
+          sudo apt-get install -y python3-pip build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev
           pip install cpplint
 
       - name: Run cpplint on user_system.cpp
         run: cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references user_system.cpp
 
       - name: Compile user_system.cpp as object (no main)
-        run: g++ -std=c++17 -Wall -Wextra -c user_system.cpp -o user_system.o -lsqlite3 -lcrypto
+        run: |
+          mkdir -p build
+          g++ -std=c++17 -Wall -Wextra -c user_system.cpp -o build/user_system.o -lsqlite3 -lcrypto
 
-      - name: Compile and run Google Test
+      - name: Upload compiled object
+        uses: actions/upload-artifact@v4
+        with:
+          name: user_system_object
+          path: build/user_system.o
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build-lint
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies and Google Test
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev libgtest-dev
+
+          # Build Google Test
+          cd /usr/src/gtest
+          sudo cmake .
+          sudo make
+          sudo cp lib/*.a /usr/lib/
+
+      - name: Compile and run tests
         run: |
           g++ -std=c++17 user_system.cpp test_user_system.cpp \
             -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_user_system
           ./test_user_system
 
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
 
-      - name: Compile user_system.cpp to object file (no main)
-        run: g++ -std=c++17 -Wall -Wextra -c user_system.cpp -o build/user_system.o
-
+    steps:
+      - name: Download compiled object
+        uses: actions/download-artifact@v4
+        with:
+          name: user_system_object
 
       - name: Upload user_system binary
         uses: actions/upload-artifact@v4
         with:
           name: user_system_binary
-          path: build/user_system.o
+          path: user_system.o
