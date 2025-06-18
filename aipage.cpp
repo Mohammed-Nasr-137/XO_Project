@@ -1,10 +1,8 @@
 #include "include/aipage.h"
-#include "include/ui_aipage.h"
-
 #include <QDebug>
 #include <QSettings>
+#include "include/ui_aipage.h"
 #include <string>
-
 #include "include/mainscreen.h"
 #include "include/GameData.h"
 #include "include/gameboard.h"
