@@ -70,7 +70,8 @@ int AI::EvaluateBoard(const Board& board, char ai_player, char human_player) {
 }
 
 void AI::LogMinimaxMove(bool is_maximizing, int depth,
-                        const std::string& message, std::pair<int, int> move) const {
+                        const std::string& message, std::pair<int, int> move) const
+{
     std::string indent(depth * 2, ' ');
     std::string player = is_maximizing ? "MAX" : "MIN";
     if (move.first != -1 && move.second != -1) {
