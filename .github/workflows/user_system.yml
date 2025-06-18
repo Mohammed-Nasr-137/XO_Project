@@ -35,6 +35,14 @@ jobs:
 
       - name: Compile user_system.cpp (object file only)
         run: g++ -std=c++17 -Wall -Wextra -c user_system.cpp -o user_system.o -lsqlite3 -lcrypto
+      - name: Build Google Test
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake libgtest-dev
+          cd /usr/src/gtest
+          sudo cmake CMakeLists.txt
+          sudo make
+          sudo cp lib/*.a /usr/lib
 
       - name: Compile and run Google Test
         run: |
