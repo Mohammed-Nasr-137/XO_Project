@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint-and-test:
+  build-lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,33 +20,61 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y python3-pip build-essential g++ cmake \
-            libgtest-dev libssl-dev sqlite3 libsqlite3-dev
+          sudo apt-get install -y python3-pip build-essential g++ cmake libssl-dev sqlite3 libsqlite3-dev
           pip install cpplint
-
-          # Build Google Test
-          cd /usr/src/gtest
-          sudo cmake CMakeLists.txt
-          sudo make
-          sudo cp lib/*.a /usr/lib/
 
       - name: Run cpplint on ai.cpp
         run: |
           cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references ai.cpp
-
-      - name: Compile and run Google Test for AI
-        run: |
-          g++ -std=c++17 ai.cpp test_ai.cpp \
-            -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_ai
-          ./test_ai
 
       - name: Compile ai.cpp to object file
         run: |
           mkdir -p build
           g++ -std=c++17 -Wall -Wextra -c ai.cpp -o build/ai.o
 
-      - name: Upload compiled ai.o file
+      - name: Upload ai.o file
         uses: actions/upload-artifact@v4
         with:
-          name: ai_object_file
+          name: ai_object
+          path: build/ai.o
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build-lint
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Google Test and dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential g++ cmake libgtest-dev libssl-dev sqlite3 libsqlite3-dev
+
+          # Build Google Test
+          cd /usr/src/gtest
+          sudo cmake .
+          sudo make
+          sudo cp lib/*.a /usr/lib/
+
+      - name: Compile and run tests
+        run: |
+          g++ -std=c++17 ai.cpp test_ai.cpp \
+            -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_ai
+          ./test_ai
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Download object file
+        uses: actions/download-artifact@v4
+        with:
+          name: ai_object
+
+      - name: Upload ai.o as binary artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai_binary
           path: build/ai.o
