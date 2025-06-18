@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'user_system.cpp'
-      - '.github/workflows/ci_user_system.yml'
+      - '.github/workflows/user_system.yml'
   workflow_dispatch:
 
 jobs:
