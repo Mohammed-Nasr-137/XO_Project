@@ -52,4 +52,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: user_system_binary
-          path: build/user_system
+          path: build/user_system.o
