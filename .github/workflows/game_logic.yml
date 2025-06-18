@@ -51,4 +51,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: game_logic_binary
-          path: build/game_logic
+          path: build/game_logic.cpp
