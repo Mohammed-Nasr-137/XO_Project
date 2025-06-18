@@ -1,11 +1,11 @@
 #include "include/aipage.h"
-#include <QDebug>
-#include <QSettings>
 #include "include/ui_aipage.h"
-#include <string>
 #include "include/mainscreen.h"
 #include "include/GameData.h"
 #include "include/gameboard.h"
+#include <QDebug>
+#include <QSettings>
+#include <string>
 
 Aipage::Aipage(QWidget *parent)
     : QMainWindow(parent),
