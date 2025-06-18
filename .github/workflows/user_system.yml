@@ -29,7 +29,7 @@ jobs:
 
         
       - name: Compile test
-        run: g++ -std=c++17 user_system.cpp user_system_test.cpp -lsqlite3 -lcrypto -o user_system_test
+        run: g++ -std=c++17 user_system.cpp test_user_system.cpp -lsqlite3 -lcrypto -o test_user_system
 
       - name: Build user_system.cpp
         run: |
