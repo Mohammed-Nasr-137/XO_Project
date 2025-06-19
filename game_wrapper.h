@@ -1,12 +1,13 @@
 #ifndef GAME_WRAPPER_H
 #define GAME_WRAPPER_H
 
-#include "user_system.h"
-#include "ai.h"
-#include "game_logic.h"
 #include <vector>
 #include <string>
 #include <tuple>
+#include "user_system.h"
+#include "ai.h"
+#include "game_logic.h"
+
 
 using namespace std;
 // The GameWrapper class acts as a controller or facade, connecting the
