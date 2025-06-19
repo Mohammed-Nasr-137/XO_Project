@@ -1,5 +1,5 @@
-#ifndef GAME_WRAPPER_H
-#define GAME_WRAPPER_H
+#ifndef GAME_WRAPPER_H_
+#define GAME_WRAPPER_H_
 #include <vector>
 #include <string>
 #include <utility>
