@@ -2,6 +2,7 @@
 #define GAME_WRAPPER_H
 #include <vector>
 #include <string>
+#include <utility>
 #include <tuple>
 #include "user_system.h"
 #include "ai.h"
