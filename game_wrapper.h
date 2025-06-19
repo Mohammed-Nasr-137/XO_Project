@@ -54,4 +54,4 @@ public:
     std::tuple<int, int, int> GetHeadToHeadStats(const std::string& user1, const std::string& user2);
     std::tuple<int, int, int> GetHumanVsAIStats(const std::string& humanUser);
 };
-#endif
+#endif  // GAME_WRAPPER_H_
