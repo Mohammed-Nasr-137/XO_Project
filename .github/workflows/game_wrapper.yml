@@ -60,7 +60,7 @@ jobs:
 
       - name: Compile and run tests
         run: |
-          g++ -std=c++17 game_wrapper.cpp test_wrapper.cpp user_system.cpp game_engine.cpp \
+          g++ -std=c++17 game_wrapper.cpp test_wrapper.cpp user_system.cpp \
             -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_wrapper
           ./test_wrapper
 
