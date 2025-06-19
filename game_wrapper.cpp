@@ -127,3 +127,7 @@ tuple<int, int, int> GameWrapper::GetHumanVsAIStats(
     const string& humanUser) {
     return sys_.getHumanVsAIStats(humanUser);
 }
+GameWrapper::~GameWrapper()
+{
+    // Destructor implementation (clean up resources, etc.)
+}
