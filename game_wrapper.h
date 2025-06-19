@@ -53,7 +53,8 @@ public:
     bool SaveGameWithMoves(const std::string player1,
                             const std::string player2,
                             const std::string winner,
-                            const std::vector<std::pair<int, std::string>> moves);
+                            const std::vector<std::pair
+                                <int, std::string>> moves);
     std::vector<std::tuple<int, std::string, std::string, std::string>>
     GetGameHistory(const std::string& username);
     std::vector<std::pair<int, std::string>>
