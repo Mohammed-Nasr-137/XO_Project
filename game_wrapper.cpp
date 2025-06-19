@@ -103,7 +103,7 @@ string GameWrapper::getcurrent_user() {
 
 bool GameWrapper::SaveGameWithMoves(const string player1, const string player2,
                                     const string winner,
-                                    const vector<pair<int, string>>& moves)
+                                    const vector<pair<int, string>> moves)
 {
     return sys_.saveGameWithMoves(player1, player2, winner, moves);
 }
