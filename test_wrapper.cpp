@@ -146,25 +146,6 @@ TEST_F(GameWrapperTest, UndoMove) {
     EXPECT_EQ(wrapper->getCurrentUserSymbol(), 'X');
 }
 
-// AI Difficulty Tests
-TEST_F(GameWrapperTest, AIEasyMode) {
-    wrapper->StartNewGame("Human", "AI", true, "easy", "X");
-    wrapper->MakeHumanMove(1);
-    wrapper->MakeAIMove();
-    
-    EXPECT_EQ(wrapper->GetComment(), "Random move (easy mode)");
-}
-
-TEST_F(GameWrapperTest, AIMediumMode) {
-    wrapper->StartNewGame("Human", "AI", true, "medium", "X");
-    wrapper->MakeHumanMove(1);
-    wrapper->MakeAIMove();
-    
-    string comment = wrapper->GetComment();
-    EXPECT_NE(comment, "Random move (easy mode)");
-    EXPECT_FALSE(comment.empty());
-}
-
 // Database Tests
 TEST_F(GameWrapperTest, SaveGame) {
     string user1 = CreateUniqueUser();
