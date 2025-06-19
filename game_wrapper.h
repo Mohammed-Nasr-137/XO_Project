@@ -28,7 +28,6 @@ public:
     // Helper to get the last AI move explanation.
     void GetComment();
 
-private:
     // Constructor initializes the UserSystem with the database path.
     GameWrapper();
     // --- User Management ---
