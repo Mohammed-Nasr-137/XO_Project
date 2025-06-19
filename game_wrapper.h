@@ -46,12 +46,7 @@ public:
     char getCurrentUserSymbol();
     string getcurrent_user();
     // --- Database History/Stats ---
-    bool SaveGameWithMoves(
-        const std::string player1, // username1
-        const std::string player2, // username2
-        const std::string winner,  // winner symbol
-        const std::vector<std::pair<int, std::string>> moves // pair of position and comment
-        );
+    bool SaveGameWithMoves(const std::string player1, const std::string player2, const std::string winner, const std::vector<std::pair<int, std::string>> moves); // pair of position and comment
     std::vector<std::tuple<int, std::string, std::string, std::string>> GetGameHistory(const std::string& username);
     std::vector<std::pair<int, std::string>> LoadGameMovesWithComments(int game_id);
     std::tuple<int, int, int> GetHeadToHeadStats(const std::string& user1, const std::string& user2);
