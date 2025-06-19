@@ -41,20 +41,19 @@ public:
                         bool is_single_mode, const std::string& ai_level,
                         const std::string& chosen_symbol);
     bool MakeHumanMove(int position);
-    pair<bool, int> MakeAIMove();
+    std::pair<bool, int> MakeAIMove();
     void Undo();
     // --- Game State Checks ---
     std::pair<bool, std::string> CheckWinner();
     bool CheckTie();
     std::vector<std::vector<char>> GetBoard();
     char getCurrentUserSymbol();
-    string getcurrent_user();
+    std::string getcurrent_user();
     // --- Database History/Stats ---
     bool SaveGameWithMoves(const std::string player1,
                             const std::string player2,
                             const std::string winner,
-                            const std::vector<std::pair<int,
-                            std::string>> moves);
+                            const std::vector<std::pair<int, std::string>> moves);
     std::vector<std::tuple<int, std::string, std::string, std::string>>
     GetGameHistory(const std::string& username);
     std::vector<std::pair<int, std::string>>
