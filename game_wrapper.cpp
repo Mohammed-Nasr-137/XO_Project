@@ -1,13 +1,13 @@
-#include "include/game_wrapper.h"
+#include "game_wrapper.h"
 
 #include <string>
 #include <utility>
 #include <tuple>
 #include <vector>
 
-#include "include/ai.h"
-#include "include/game_logic.h"
-#include "include/user_system.h"
+#include "ai.h"
+#include "game_logic.h"
+#include "user_system.h"
 
 using std::pair;
 using std::string;
