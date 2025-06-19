@@ -1,24 +1,81 @@
-name: CI Lint for game_wrapper.cpp
+name: CI for game_wrapper.cpp
 
 on:
   push:
     paths:
       - 'game_wrapper.cpp'
+      - 'game_wrapper.h'
+      - 'test_wrapper.cpp'
+      - '.github/workflows/game_wrapper.yml'
   workflow_dispatch:
 
 jobs:
-  cpplint-check:
+  build-lint:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install cpplint
+      - name: Install dependencies
         run: |
-          python3 -m pip install --upgrade pip
+          sudo apt-get update
+          sudo apt-get install -y python3-pip build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev
           pip install cpplint
 
-      - name: Run cpplint (filtered rules to reduce false positives)
+      - name: Run cpplint on game_wrapper.cpp and game_wrapper.h
         run: |
-          cpplint --filter=-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_wrapper.cpp
+          cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_wrapper.cpp
+          cpplint --filter=-build/include_subdir,-legal/copyright,-whitespace/braces,-whitespace/indent,-runtime/references game_wrapper.h
+
+      - name: Compile game_wrapper.cpp as object (no main)
+        run: |
+          mkdir -p build
+          g++ -std=c++17 -Wall -Wextra -c game_wrapper.cpp -o build/game_wrapper.o -lsqlite3 -lcrypto
+
+      - name: Upload compiled object
+        uses: actions/upload-artifact@v4
+        with:
+          name: game_wrapper_object
+          path: build/game_wrapper.o
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build-lint
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies and Google Test
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential g++ cmake sqlite3 libsqlite3-dev libssl-dev libgtest-dev
+
+          # Build Google Test
+          cd /usr/src/gtest
+          sudo cmake .
+          sudo make
+          sudo cp lib/*.a /usr/lib/
+
+      - name: Compile and run tests
+        run: |
+          g++ -std=c++17 game_wrapper.cpp test_wrapper.cpp \
+            -lgtest -lgtest_main -lpthread -lsqlite3 -lcrypto -o test_wrapper
+          ./test_wrapper
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Download compiled object
+        uses: actions/download-artifact@v4
+        with:
+          name: game_wrapper_object
+
+      - name: Upload game_wrapper binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: game_wrapper_binary
+          path: game_wrapper.o
