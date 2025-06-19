@@ -13,7 +13,7 @@ using namespace std;
 // The GameWrapper class acts as a controller or facade, connecting the
 // UI layer with the backend game logic, AI, and user database systems.
 class GameWrapper {
-private:
+public:
     UserSystem  sys_;
     AI          ai_;
     GameEngine  game_;
@@ -30,7 +30,7 @@ private:
     // Helper to get the last AI move explanation.
     void GetComment();
 
-public:
+
     // Constructor initializes the UserSystem with the database path.
     GameWrapper();
 
