@@ -8,8 +8,6 @@
 #include "ai.h"
 #include "game_logic.h"
 
-
-using namespace std;
 // The GameWrapper class acts as a controller or facade, connecting the
 // UI layer with the backend game logic, AI, and user database systems.
 class GameWrapper {
@@ -54,10 +52,10 @@ public:
 
     // --- Database History/Stats ---
     bool SaveGameWithMoves(
-        const string player1, // username1
-        const string player2, // username2
-        const string winner,  // winner symbol
-        const vector<pair<int, string>> moves // pair of position and comment
+        const std::string player1, // username1
+        const std::string player2, // username2
+        const std::string winner,  // winner symbol
+        const std::vector<pair<int, std::string>> moves // pair of position and comment
         );
 
 
