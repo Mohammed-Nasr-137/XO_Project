@@ -29,7 +29,6 @@ public:
     std::tuple<int, int, int> getHumanVsAIStats(const std::string& humanUser);
 
 
-private:
     sqlite3* db;
 
     bool openDatabase(const std::string& db_name);
