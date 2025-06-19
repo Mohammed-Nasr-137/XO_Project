@@ -191,3 +191,7 @@ void Gameboard::on_c_9_clicked() {
     qDebug() << GameData::instance().is_ai_turn;
     Gameboard::make_human_play(c, 9);
 }
+GameWrapper::~GameWrapper()
+{
+    // Destructor implementation (clean up resources, etc.)
+}
