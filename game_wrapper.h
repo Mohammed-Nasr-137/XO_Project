@@ -1,6 +1,5 @@
 #ifndef GAME_WRAPPER_H
 #define GAME_WRAPPER_H
-
 #include <vector>
 #include <string>
 #include <tuple>
@@ -10,7 +9,8 @@
 
 // The GameWrapper class acts as a controller or facade, connecting the
 // UI layer with the backend game logic, AI, and user database systems.
-class GameWrapper {
+class GameWrapper
+{
 private:
     UserSystem  sys_;
     AI          ai_;
@@ -47,7 +47,6 @@ public:
     bool CheckTie();
     std::vector<std::vector<char>> GetBoard();
     char getCurrentUserSymbol();
-
     string getcurrent_user();
 
     // --- Database History/Stats ---
@@ -57,7 +56,6 @@ public:
         const std::string winner,  // winner symbol
         const std::vector<pair<int, std::string>> moves // pair of position and comment
         );
-
 
     std::vector<std::tuple<int, std::string, std::string, std::string>> GetGameHistory(const std::string& username);
     std::vector<std::pair<int, std::string>> LoadGameMovesWithComments(int game_id);
