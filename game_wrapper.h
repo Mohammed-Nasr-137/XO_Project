@@ -66,4 +66,4 @@ public:
     std::tuple<int, int, int> GetHumanVsAIStats(const std::string& humanUser);
 };
 
-#endif // GAME_WRAPPER_H
+#endif
