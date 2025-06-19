@@ -15,7 +15,6 @@ protected:
     string CreateUniqueUser() {
         return "user_" + to_string(time(nullptr) + rand());
     }
-    ~GameWrapper();
 };
 
 // Authentication Tests
