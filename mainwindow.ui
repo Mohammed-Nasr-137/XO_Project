@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>473</width>
+    <height>531</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+    background: qlineargradient(
+        spread: pad,
+        x1: 0, y1: 0,
+        x2: 1, y2: 1,
+        stop: 0 rgba(0, 34, 133, 180),
+        stop: 1 rgba(255, 255, 255, 80)
+    );
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="username">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>140</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    color: black;
+    background-color: rgba(255, 255, 255, 200);  /* أبيض شفاف */
+    border-radius: 10px;
+    padding: 6px 10px;
+    font: bold 12pt &quot;Arial&quot;;
+    border: 1px solid rgba(0, 0, 0, 50);
+}
+
+QLineEdit:focus {
+    border: 2px solid #007BFF; /* أزرق جميل */
+    background-color: rgba(255, 255, 255, 240);
+    box-shadow: 0 0 5px #007BFF;
+}
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>Enter Username</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>90</y>
+      <width>121</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>14</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+font: 700 14pt &quot;Arial&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>Username</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="signup_button">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>360</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: none;
+    color: white;
+    background-color: rgba(0, 120, 255, 180); /* أزرق شفاف */
+    font: bold 11pt &quot;Arial&quot;;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 144, 255, 220); /* أزرق أفتح عند المرور */
+    font: bold 12pt &quot;Arial&quot;;
+}
+
+QPushButton:pressed {
+    background-color: rgba(0, 80, 180, 255); /* أزرق داكن عند الضغط */
+    font: bold 12pt &quot;Arial&quot;;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>SignUp</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Login_Label">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>0</y>
+      <width>301</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>22</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+font: 700 22pt &quot;Arial&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Login     </string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="savedusers">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>140</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    background-color: rgba(220, 220, 220, 180);  /* رمادي فاتح */
+    color: black;
+    border: none;
+    padding: 6px 10px;
+    font: bold 11pt &quot;Arial&quot;;
+    border-radius: 10px;
+}
+
+QComboBox:hover {
+    background-color: rgba(245, 245, 245, 220);
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 25px;
+    background: transparent;
+}
+
+QComboBox::down-arrow {
+    width: 12px;
+    height: 12px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: rgba(240, 240, 240, 230);
+    color: black;
+    border: none;
+    selection-background-color: rgba(100, 149, 237, 50); /* ظل أزرق فاتح */
+}
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>     Saved Users</string>
+    </property>
+    <property name="duplicatesEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>190</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>14</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+font: 700 14pt &quot;Arial&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>Password</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>240</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>12</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    color: black;
+    background-color: rgba(255, 255, 255, 200);  /* أبيض شفاف */
+    border-radius: 10px;
+    padding: 6px 10px;
+    font: bold 12pt &quot;Arial&quot;;
+    border: 1px solid rgba(0, 0, 0, 50);
+}
+
+QLineEdit:focus {
+    border: 2px solid #007BFF; /* أزرق جميل */
+    background-color: rgba(255, 255, 255, 240);
+    box-shadow: 0 0 5px #007BFF;
+}
+</string>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::EchoMode::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string>Enter Password</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="checkBox">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>310</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox {
+    spacing: 8px;
+    color: white;
+    font: bold 11pt &quot;Arial&quot;;
+}
+
+QCheckBox::indicator {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 2px solid white;
+    background-color: transparent;
+}
+
+QCheckBox::indicator:checked {
+    background-color:  rgb(0, 170, 255);
+	
+  
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Remember me</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="login_button">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>360</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: none;
+    color: white;
+    background-color: rgba(0, 120, 255, 180); /* أزرق شفاف */
+    font: bold 11pt &quot;Arial&quot;;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 144, 255, 220); /* أزرق أفتح عند المرور */
+    font: bold 12pt &quot;Arial&quot;;
+}
+
+QPushButton:pressed {
+    background-color: rgba(0, 80, 180, 255); /* أزرق داكن عند الضغط */
+    font: bold 12pt &quot;Arial&quot;;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Login</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exitgame_button">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>430</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border: none;
+    color: white;
+    background-color: rgba(0, 120, 255, 180); /* أزرق شفاف */
+    font: bold 11pt &quot;Arial&quot;;
+    border-radius: 20px;
+    padding: 8px;
+}
+
+QPushButton:hover {
+    background-color: rgba(30, 144, 255, 220); /* أزرق أفتح عند المرور */
+    font: bold 12pt &quot;Arial&quot;;
+}
+
+QPushButton:pressed {
+    background-color: rgba(0, 80, 180, 255); /* أزرق داكن عند الضغط */
+    font: bold 12pt &quot;Arial&quot;;
+}
+</string>
+    </property>
+    <property name="text">
+     <string>EXIT GAME</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>20</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: white;
+font: 700 22pt &quot;Arial&quot;;</string>
+    </property>
+    <property name="text">
+     <string>U1</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>473</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuTic_Tac_Toe">
+    <property name="title">
+     <string>Tic Tac Toe</string>
+    </property>
+   </widget>
+   <addaction name="menuTic_Tac_Toe"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
