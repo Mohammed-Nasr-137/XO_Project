@@ -16,6 +16,17 @@
 
 ---
 
+## 🛠 Technologies
+
+- **C++17**
+- **Qt 5.12+**
+- **SQLite3**
+- **OpenSSL** (for password hashing)
+- **CMake**
+- **GoogleTest** (unit testing)
+
+---
+
 ## 🧱 Architecture
 
 ```txt
